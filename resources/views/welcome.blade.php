@@ -11,11 +11,13 @@
 </head>
 <body>
     <div class="container text-center mt-4">
-            <h1 class="text-warning">Bienvenidos estimado cliente</h1>
+            <h1 class="text-light">Bienvenidos estimado cliente</h1>
             <header class="mb-auto">
                 <img src="{{ asset('images/logo.jpg') }}" alt="Logo Alitas Mary" class="logo">
             </header>
-            <a href="{{ route('producto.index') }}" class="btn btn-light btn-lg w-100">Ingresar</a>  
+            <div class="fs-4 fw-lighter my-5">
+                <a href="{{ route('producto.index') }}" class="btn btn-dark btn-lg w-25">Ingresar</a>  
+            </div>
     </div>
     
 

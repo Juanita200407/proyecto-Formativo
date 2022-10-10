@@ -5,3 +5,21 @@
     max-width: 500px;
     border-radius: 50%;
 }
+
+body{
+    background: url(../images/fondo2.png);
+    background-size:cover;
+    background-attachment: fixed;
+}
+
+#container-inicio{
+    border-radius: 15px;
+    background: #fff;
+    width: 175vh;
+    height: 80vh;
+
+}
+
+#btn{
+    background: rgba(255, 0, 221, 0.389);
+}

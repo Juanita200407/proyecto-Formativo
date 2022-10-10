@@ -1,32 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
-@section('template_title')
-    {{ $producto->name ?? 'Show Producto' }}
-@endsection
+@section('titulo', 'Detalle del producto')
 
 @section('content')
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <div class="float-left">
-                            <span class="card-title">Show Producto</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('productos.index') }}"> Back</a>
-                        </div>
-                    </div>
+                    
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Nombreproducto:</strong>
-                            {{ $producto->nombreProducto }}
+                            <strong>Nombre:</strong>
+                            {{ $producto->nombre }}
                         </div>
                         <div class="form-group">
                             <strong>Descrpcion:</strong>
-                            {{ $producto->descrpcion }}
+                            {{ $producto->descripcion }}
                         </div>
                         <div class="form-group">
                             <strong>Tamaño:</strong>
@@ -41,6 +32,14 @@
                             {{ $producto->precio }}
                         </div>
 
+                    </div>
+                    <div class="card-header">
+                        <div class="float-left">
+                            <span class="card-title">Regresar</span>
+                        </div>
+                        <div class="float-right">
+                            <a class="btn btn-outline-primary" href="{{ route('producto.index') }}"><i class="fa-solid fa-arrow-left"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>

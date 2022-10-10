@@ -18,8 +18,16 @@ class ProductoController extends Controller
      */
     public function index(Request $request)
     {
-        $producto = new Producto();
+        if($request)
+        {
+            $query = $request->buscar;
+            $producto = Producto::where('nombre', 'LIKE', '%' . $query . '%')
+                                    ->orderBy('nombre', 'asc')->paginate(5); 
+            return view('producto.index', compact('producto', 'query'));
 
+        }
+        // Obtener todos los registros
+        $producto = Producto::orderBy('nombre', 'asc')->paginate(5); 
         return view('producto.index', compact('producto'));
     }
 
@@ -30,7 +38,8 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('producto.create', compact('producto'));
+        $producto = new Producto();
+        return view('producto.insert', compact('producto'));
     }
 
     /**
@@ -41,12 +50,17 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Producto::$rules);
+        $nombre = $request->nombre;
+        $descripcion = $request->descripcion;
+        $tamaño  = $request->tamaño ;
+        $cantidad = $request->cantidad;
+        $precio = $request->precio;
 
-        $producto = Producto::create($request->all());
+
+        Producto::create($request->all());
 
         return redirect()->route('producto.index')
-            ->with('success', 'Producto created successfully.');
+            ->with('exito', 'Producto se ha registrado satisfatoriamente.');
     }
 
     /**
@@ -57,6 +71,7 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
+        
         $producto = Producto::findOrFail($id);
 
         return view('producto.show', compact('producto'));
@@ -71,7 +86,6 @@ class ProductoController extends Controller
     public function edit($id)
     {
         $producto = Producto::findOrFail($id);
-
         return view('producto.edit', compact('producto'));
     }
 
@@ -84,7 +98,7 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        request()->validate(Producto::$rules);
+        $producto = Producto::findOrFail($id);
 
         $producto->update($request->all());
 
@@ -99,9 +113,8 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        $producto = Producto::find($id)->delete();
-
-        return redirect()->route('producto.index')
-            ->with('Eliminado', 'Producto se ha eliminado satisfactoriamente');
+        $producto = Producto::findOrFail($id);
+        $producto->delete();
+        return redirect()->route('producto.index');
     }
 }
