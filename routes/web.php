@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
-use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\UsuariosController;
+
 
 
 /*
@@ -27,4 +28,6 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('producto', ProductoController::class)->middleware('auth');
-Route::resource('clientes', ClienteController::class)->middleware('auth');
+Route::resource('usuarios', UsuariosController::class)->middleware('auth');
+
+

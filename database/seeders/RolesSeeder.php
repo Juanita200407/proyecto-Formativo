@@ -1,10 +1,10 @@
 <?php
 
 namespace Database\Seeders;
-
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Rol;
+
+
+use Illuminate\Database\Seeder;
 
 class RolesSeeder extends Seeder
 {
@@ -17,5 +17,6 @@ class RolesSeeder extends Seeder
     {
         Rol::create(['nombre'=>'Usuario']);
         Rol::create(['nombre'=>'Administrador']);
+
     }
 }

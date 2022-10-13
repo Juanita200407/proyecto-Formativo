@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Gate;
 
 /**
  * Class ProductoController
@@ -11,6 +12,11 @@ use Illuminate\Http\Request;
  */
 class ProductoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -38,8 +44,11 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        $producto = new Producto();
-        return view('producto.insert', compact('producto'));
+        if(Gate::denies('administrador'))
+        {
+            return redirect()->route('producto.index');
+        }
+        return view('producto.insert');
     }
 
     /**
@@ -85,6 +94,10 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
+        if(Gate::denies('administrador'))
+        {
+            return redirect()->route('producto.index');
+        }
         $producto = Producto::findOrFail($id);
         return view('producto.edit', compact('producto'));
     }
@@ -113,6 +126,10 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
+        if(Gate::denies('administrador'))
+        {
+            return redirect()->route('producto.index');
+        }
         $producto = Producto::findOrFail($id);
         $producto->delete();
         return redirect()->route('producto.index');
