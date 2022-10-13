@@ -21,6 +21,9 @@
                 <a href="{{ route('producto.index') }}" class="btn btn-dark btn-lg w-25">Ingresar</a>  
             </div>
     </div>
+
+
+    
     
 
 <script src="{{ asset('css/bootstrap/js/bootstrap.bundle.js') }}"></script>

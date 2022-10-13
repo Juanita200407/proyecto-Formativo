@@ -23,17 +23,20 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Producto
                         </a>
-                        @can(['administrador'])
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('producto.index')}}">listar</a></li>
+                            @can(['administrador'])
                             <li><a class="dropdown-item" href="{{ route('producto.create')}}">crear menu</a></li>
+                            @endcan
                         </ul>
                     </li>
+                    @can(['administrador'])
                     <li class="nav-item">
                         <a href="{{ route('usuarios.index') }}" class="nav-link">Usuarios</a>
                     </li>
+                    @endcan
+
                 </ul>
-                @endcan
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Buscar..." name="buscar" aria-label="Buscar">
                     <button class="btn btn-outline-dark" type="submit">Buscar</button>
@@ -60,8 +63,8 @@
         </div>
     </nav>
 
-    <div class="container my-6" id="container-inicio">
-        <h1 class="text-center mt-5">@yield('titulo')</h1>
+    <div class="container p-5 my-5" id="container-inicio">
+        <h1 class="text-center p-3 my-3">@yield('titulo')</h1>
         @yield('content')
     </div>
     <script src="{{ asset('css/bootstrap/js/bootstrap.bundle.js') }}"></script>

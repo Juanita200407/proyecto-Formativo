@@ -3,7 +3,7 @@
 @section('titulo', 'Nuevo producto')
 
 @section('content')
-    <form action="{{ route('producto.store') }}" method="post" class="needs-validation" novalidate>
+    <form action="{{ route('producto.store') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
         @csrf 
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" required>
@@ -24,6 +24,10 @@
         <div class="form-floating mb-3">
             <input type="number" class="form-control" id="precio" name="precio" placeholder="precio" required>
             <label for="precio">Precio</label>
+        </div>
+        <div class="mb-3">
+            <label for="foto">Foto</label>
+            <input type="file" name="foto" id="foto" class="form-control">
         </div>
         <button type="submit" class="btn btn-outline-success">Guardar</button>
         <a class="btn btn-outline-danger" href="{{ route('producto.index') }}">Cancelar</a>

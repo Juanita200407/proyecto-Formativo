@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Gate;
+use Auth;
 
 /**
  * Class ProductoController
@@ -59,17 +61,27 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        $nombre = $request->nombre;
-        $descripcion = $request->descripcion;
-        $tamaño  = $request->tamaño ;
-        $cantidad = $request->cantidad;
-        $precio = $request->precio;
+        $datosProducto = $request->except('_token');
+        if($request->hasFile('foto'))
+        {
+            $datosProducto['foto'] = $request->file('foto')->store('uploads', 'public');
+        }
 
-
-        Producto::create($request->all());
-
+        Producto::insert($datosProducto);
         return redirect()->route('producto.index')
             ->with('exito', 'Producto se ha registrado satisfatoriamente.');
+        
+        // $nombre = $request->nombre;
+        // $descripcion = $request->descripcion;
+        // $tamaño  = $request->tamaño ;
+        // $cantidad = $request->cantidad;
+        // $precio = $request->precio;
+
+
+        // Producto::create($request->all());
+
+        // return redirect()->route('producto.index')
+        //     ->with('exito', 'Producto se ha registrado satisfatoriamente.');
     }
 
     /**

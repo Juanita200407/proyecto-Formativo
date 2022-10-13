@@ -1,43 +1,27 @@
 @extends('layouts.main')
 
-@section('titulo', 'Usuarios')
+@section('titulo', 'Editar Usuario')
 
 @section('content')
-@if($mensaje = Session::get('exito'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <p>{{ $mensaje }}</p>
-        <button type="button" class ="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
-@if($mensaje = Session::get('warning'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <p>{{ $mensaje }}</p>
-        <button type="button" class ="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
-<div class="my-3">
-    @if(count($usuario) > 0)
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($usuarios as $item)
-                <tr>
-                    <td>{{ $item->name }}</td>
-                    <td class="d-flex">
-                        
-                        <a href="{{ route('usuario.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {{-- {{ $proyectos->links() }} --}}
-    @else
-        <p>La búsqueda no encontró resultados</p>
-    @endif
-</div>
+    <form action="{{ route('usuarios.update', $usuario->id) }}" method="post">
+        @csrf
+        @method('PUT')
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="name" name="name" placeholder="name" value="{{ $usuario->name }}" readonly>
+            <label for="name">Nombre</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="email" name="email" placeholder="email" value="{{ $usuario->email }}" readonly>
+            <label for="email">Correo electrónico</label>
+        </div>
+        <label for="roles" class="fw-bold mb-3">Roles</label>
+        @foreach ($roles as $item)
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" name="rol[]" value="{{ $item->id }}" 
+                @if($usuario->roles->pluck('id')->contains($item->id)) checked @endif>
+                <label name="form-check-label">{{ $item->nombre }}</label>
+            </div>
+        @endforeach
+        <button type="submit" class="btn btn-secondary">Guardar</button>
+    </form>
 @endsection

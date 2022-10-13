@@ -26,6 +26,10 @@
             <input type="number" class="form-control" id="precio" name="precio" placeholder="precio" value="{{ $producto->precio }}" required>
             <label for="precio">Precio</label>
         </div>
+        <div class="mb-3">
+            
+            <input type="file" name="foto" id="foto" class="form-control">
+        </div>
         <button type="submit" class="btn btn-outline-secondary">Guardar</button>
     </form>
 @endsection

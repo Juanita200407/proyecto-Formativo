@@ -16,7 +16,6 @@
     </div>
 @endif
 <div class="my-3">
-    @if(count($usuario) > 0)
     <table class="table table-hover">
         <thead>
             <tr>
@@ -24,20 +23,39 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($usuario as $item)
+            @foreach($usuarios as $item)
                 <tr>
                     <td>{{ $item->name }}</td>
                     <td class="d-flex">
                         
-                        <a href="{{ route('usuario.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="{{ route('usuarios.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    {{-- {{ $proyectos->links() }} --}}
-    @else
-        <p>La búsqueda no encontró resultados</p>
-    @endif
 </div>
+@endsection
+@section('scripts')
+    <script>
+        (() => {
+        'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+
+    </script>
 @endsection
