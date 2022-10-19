@@ -22,6 +22,7 @@
 #btn{
     background: linear-gradient( rgba(255, 224, 112, 0.785), rgba(255, 84, 84, 0.575));
     border-radius: 10%;
+    border: #fff;
 
 }
 
