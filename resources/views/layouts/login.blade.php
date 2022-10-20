@@ -19,7 +19,7 @@
    
     
     
-    <div class="container justify-content-center p-5 my-5" id="container-inicio">
+    <div class="container justify-content-center p-5 my-5 d-print-flex" id="container-inicio">
         <h1 class="text-center p-2 my-3">@yield('titulo')</h1>
         @yield('content')
     </div>

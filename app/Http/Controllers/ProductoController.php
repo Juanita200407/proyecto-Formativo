@@ -68,8 +68,7 @@ class ProductoController extends Controller
         }
 
         Producto::insert($datosProducto);
-        return redirect()->route('producto.index')
-            ->with('exito', 'Producto se ha registrado satisfatoriamente.');
+        return redirect()->route('producto.index')->with('exito', 'Producto se ha registrado satisfatoriamente.');
         
         // $nombre = $request->nombre;
         // $descripcion = $request->descripcion;

@@ -44,16 +44,18 @@
                 {{ __('¡Registrese!') }}
             </a>
         </div>
-        <div class="flex items-center justify-end mt-4">
+        <div class="mt-3">
+            <button class="btn btn-outline-dark ml-4 w-100" id="btn">
+                {{ __('Log in') }}
+            </button>
+        </div>
+        <div class="flex items-center position-absolute bottom-0 end-0 mt-2>
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
                 @endif
 
-            <button class="ml-3" id="btn">
-                {{ __('Log in') }}
-            </button>
         </div>
     </form>
 @endsection
