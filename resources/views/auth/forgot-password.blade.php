@@ -1,13 +1,12 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.login')
+
+@section('content')
+<img src="{{ asset('images/alitas.png') }}" alt="Logo Alitas Mary" class="logo position-absolute top-3 start-50 translate-middle mt-1">
+
+    <div class="col">
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+            {{ __('¿Olvidaste tu contraseña? No hay problema. Simplemente háganos saber su dirección de correo electrónico y le enviaremos un enlace de restablecimiento de contraseña que le permitirá elegir una nueva.') }}
         </div>
 
         <!-- Session Status -->
@@ -27,10 +26,10 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-button>
+                <x-button id="btn">
                     {{ __('Email Password Reset Link') }}
                 </x-button>
             </div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+    </div>
+@endsection

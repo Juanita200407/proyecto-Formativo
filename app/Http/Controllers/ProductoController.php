@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 use App\Models\Producto;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Gate;
 use Auth;
@@ -50,7 +51,8 @@ class ProductoController extends Controller
         {
             return redirect()->route('producto.index');
         }
-        return view('producto.insert');
+        $categoria = Categoria::orderBy('tipo', 'asc')->get();
+        return view('producto.insert', compact('categoria'));
     }
 
     /**
@@ -91,8 +93,12 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        
-        $producto = Producto::findOrFail($id);
+        $producto = Producto::join('categorias', 'productos.categorias_id', 'categorias.id')
+                                ->select('productos.id', 'productos.nombre', 'productos.descripcion', 'productos.tamaño', 'productos.cantidad', 'productos.precio', 'categorias.tipo as categoria', 'productos.foto')
+                                ->where('productos.id', $id)
+                                ->first();
+
+        // $producto = Producto::findOrFail($id);
 
         return view('producto.show', compact('producto'));
     }
@@ -110,7 +116,8 @@ class ProductoController extends Controller
             return redirect()->route('producto.index');
         }
         $producto = Producto::findOrFail($id);
-        return view('producto.edit', compact('producto'));
+        $categoria = Categoria::orderBy('tipo', 'asc')->get();
+        return view('producto.edit', compact('producto', 'categoria'));
     }
 
     /**
@@ -123,9 +130,15 @@ class ProductoController extends Controller
     public function update(Request $request, $id)
     {
         $producto = Producto::findOrFail($id);
+        $datosProducto = $request->except(['_token', '_method']); 
+        if($request->hasFile('foto'))
+        {
+            
+            Storage::delete('public/'. $producto->foto);
+            $datosProducto['foto'] = $request->file('foto')->store('uploads', 'public');
+        }
 
-        $producto->update($request->all());
-
+        Producto::where('id', $id)->update($datosProducto);
         return redirect()->route('producto.index')
             ->with('Exito', 'Producto se ha actualizado satisfactoriamente');
     }
@@ -142,7 +155,11 @@ class ProductoController extends Controller
             return redirect()->route('producto.index');
         }
         $producto = Producto::findOrFail($id);
-        $producto->delete();
+        if(Storage::delete('public/'. $producto->foto))
+        {
+            $producto->delete();
+
+        }
         return redirect()->route('producto.index');
     }
 }

@@ -14,8 +14,13 @@
             <label for="descripcion">Descripcion</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="tamaño" name="tamaño" placeholder="tamaño" required>
-            <label for="tamaño">Tamaño</label>
+            <select class="form-select" id="tamaño" name="tamaño">
+                <option selected value="" disabled>Seleccione...</option>
+                <option value="Grande">Grande</option>
+                <option value="Mediana">Mediana</option>
+                <option value="Pequeña">Pequeña</option>
+              </select>
+              <label for="tamaño">Tamaño</label>
         </div>
         <div class="form-floating mb-3">
             <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="cantidad" required>
@@ -24,6 +29,15 @@
         <div class="form-floating mb-3">
             <input type="number" class="form-control" id="precio" name="precio" placeholder="precio" required>
             <label for="precio">Precio</label>
+        </div>
+        <div class="form-floating mb-3">
+            <select name="categorias_id" id="categorias_id" class="form-select">
+                <option selected value="">Seleccione...</option>
+                @foreach ($categoria as $item)
+                    <option value="{{ $item->id }}">{{ $item->tipo }}</option>
+                @endforeach
+            </select>
+            <label for="categorias_id">Categoria</label>
         </div>
         <div class="mb-3">
             <label for="foto">Foto</label>

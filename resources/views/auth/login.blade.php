@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
-<img src="{{ asset('images/alitas.png') }}" alt="Logo Alitas Mary" class="logo position-absolute top-3 start-50 translate-middle mt-1"">
+<img src="{{ asset('images/alitas.png') }}" alt="Logo Alitas Mary" class="logo position-absolute top-3 start-50 translate-middle mt-1">
 
 
 
@@ -49,9 +49,9 @@
                 {{ __('Log in') }}
             </button>
         </div>
-        <div class="flex items-center position-absolute bottom-0 end-0 mt-2>
+        <div class="flex items-center position-absolute bottom-0 end-0 mt-2">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900 text-decoration-none text-primary" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
                 @endif

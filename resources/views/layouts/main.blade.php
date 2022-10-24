@@ -21,6 +21,17 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categoria
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('categoria.index')}}">listar</a></li>
+                            @can(['administrador'])
+                            <li><a class="dropdown-item" href="{{ route('categoria.create')}}">crear menu</a></li>
+                            @endcan
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Producto
                         </a>
                         <ul class="dropdown-menu">

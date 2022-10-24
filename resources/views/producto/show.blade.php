@@ -35,7 +35,10 @@
                             <strong>Precio:</strong>
                             {{ $producto->precio }}
                         </div>
-
+                        <div class="form-group">
+                            <strong>Categoria:</strong>
+                            {{ $producto->categoria }}
+                        </div>
                     </div>
                 </div>
                 <div class="float-right p-2">

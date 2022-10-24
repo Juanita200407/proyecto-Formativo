@@ -10,12 +10,17 @@
     display: flex;
 }
 
+.col
+{
+    width: auto;
+}
+
 .text{
     font-size: 15px;
 }
 
 a { 
-    text-decoration: none;
+    text-decoration: none, black;
 }
 
 
