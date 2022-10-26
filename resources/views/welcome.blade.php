@@ -6,21 +6,192 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/card.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    
     <title>Document</title>
 </head>
-<body>
-    <div class="container text-center mt-5">
+<body class="fondo">
+    <nav class="navbar navbar-expand-lg navbar-dark shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <img src="{{ asset('images/alitas.png') }}" alt="Logo" width="150" height="55" class="d-inline-block align-text-center">
+              Alitas de mary
+            </a>
+          </div>
+          <a class="navbar-brand" href="#">
+            <a href="{{ route('producto.index') }}" class="btn btn-outline border-dark">Ingresar</a> 
+        </div>
+      </nav>
+    <div class="container  text-center mt-1">
             <h1 class="text-dark">Bienvenidos estimado cliente</h1>
-            <header class="mb-auto mt-5">
-                <img src="{{ asset('images/logo.jpg') }}" alt="Logo Alitas Mary" class="logo">
-            </header>
-            <div class="fs-4 fw-lighter my-5">
-                <a href="{{ route('producto.index') }}" class="btn btn-dark btn-lg w-25">Ingresar</a>  
+            <div class="col-md-12 section-title text-center my-5">
+                <h3>Categoria</h3>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-container mySwiper">
+             
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="{{ asset('images/hamburguesa.png') }}"
+                                alt="">
+                            <div class="card-description">
+                                <div class="card-title">
+                                    <h4>Hamburguesas</h4>
+                                </div>
+                                <div class="card-link">
+                                <a href="#">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ asset('images/alas.webp') }}"
+                                alt="">
+                            <div class="card-description">
+                                <div class="card-title">
+                                    <h4>Alas</h4>
+                                </div>
+                                <div class="card-link">
+                                <a href="#">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ asset('images/hamburguesa.png') }}"
+                            alt="">
+                            <div class="card-description">
+                                <div class="card-title">
+                                    <h4>Choripapa</h4>
+                                </div>
+                                <div class="card-link">
+                                    <a href="#">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src=""
+                            alt="">
+                            <div class="card-description">
+                                <div class="card-title">
+                                    <h4>Carnes</h4>
+                                </div>
+                                <div class="card-link">
+                                    <a href="#">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src=""
+                            alt="">
+                            <div class="card-description">
+                                <div class="card-title">
+                                    <h4>Pasabocas</h4>
+                                </div>
+                                <div class="card-link">
+                                    <a href="#">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="swiper-slide">
+                            <img src=""
+                            alt="">
+                            <div class="card-description">
+                                <div class="card-title">
+                                    <h4>Pinchos</h4>
+                                </div>
+                                <div class="card-link">
+                                    <a href="#">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src=""
+                            alt="">
+                            <div class="card-description">
+                                <div class="card-title">
+                                    <h4>Perros</h4>
+                                </div>
+                                <div class="card-link">
+                                    <a href="#">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+           
+                </div>
+             
+             
+        
             </div>
     </div>
+
+    {{-- <div class="about-us section-padding" data-scroll-index='1'> --}}
+        {{-- <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-title text-center">
+                    <h3>Categoria</h3>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card p-3 my-3">
+                        <img src="{{ asset('images/hamburguesa.png') }}" class="card-img-top" id="foto" alt="Hamburguesa">
+                      <div class="card-body">
+                        <h5 class="section-title text-center"><a href="#" class="card-link text-decoration-none text-dark">Hamburguesas</a></h5>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+    
+
+    
+  
+      <!-- Swiper JS -->
+      <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  
+      <!-- Initialize Swiper -->
+    <script>
+            var swiper = new Swiper('.swiper-container', {
+        navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+        },
+        slidesPerView: 1,
+        spaceBetween: 10,
+        // init: false,
+        pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        },
+
+    
+        breakpoints: {
+        620: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+        },
+        680: {
+            slidesPerView: 2,
+            spaceBetween: 40,
+        },
+        920: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+        },
+        1240: {
+            slidesPerView: 4,
+            spaceBetween: 50,
+        },
+        } 
+        });
+    </script>
+    
 
 
     

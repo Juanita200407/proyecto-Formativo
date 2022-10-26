@@ -155,11 +155,13 @@ class ProductoController extends Controller
             return redirect()->route('producto.index');
         }
         $producto = Producto::findOrFail($id);
-        if(Storage::delete('public/'. $producto->foto))
-        {
-            $producto->delete();
 
+        if(Storage::delete('storage', 'public/'. $producto->foto))
+        {
+            
+            $producto->delete();
         }
         return redirect()->route('producto.index');
+
     }
 }

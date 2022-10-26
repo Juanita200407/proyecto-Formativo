@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <title>@yield('titulo')</title>
 </head>
-<body>
+<body class="fondo">
     
 
 

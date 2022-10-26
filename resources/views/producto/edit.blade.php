@@ -28,7 +28,7 @@
             <label for="cantidad">Cantidad</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="precio" name="precio" placeholder="precio" value="{{ $producto->precio }}" required>
+            <input type="number" class="form-control" id="presio" name="precio" placeholder="precio" value="{{ $producto->precio }}" required>
             <label for="precio">Precio</label>
         </div>
         <div class="form-floating mb-3">

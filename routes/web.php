@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\FrontController;
+
 
 
 
@@ -29,9 +31,13 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/', [FrontController::class, 'index']);
+
+
 Route::resource('producto', ProductoController::class)->middleware('auth');
 Route::resource('usuarios', UsuariosController::class)->middleware('auth');
 Route::resource('categoria', CategoriaController::class)->middleware('auth');
+
 
 
 

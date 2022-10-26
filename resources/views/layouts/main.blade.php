@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <title>@yield('titulo')</title>
 </head>
-<body>
+<body class="fondo">
 <nav class="navbar navbar-expand-lg navbar-dark shadow" id="color">
         <div class="container">
             <a class="navbar-brand" href="{{ route('producto.index')}}">Alitas Mary</a>
