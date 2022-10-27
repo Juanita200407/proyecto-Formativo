@@ -9,6 +9,10 @@
             <input type="text" class="form-control" id="tipo" name="tipo" placeholder="tipo" required>
             <label for="tipo">Tipo</label>
         </div>
+        <div class="mb-3">
+            <label for="foto">Foto</label>
+            <input type="file" name="foto" id="foto" class="form-control">
+        </div>
         <button type="submit" class="btn btn-outline-success">Guardar</button>
         <a class="btn btn-outline-danger" href="{{ route('categoria.index') }}">Cancelar</a>
     </form>

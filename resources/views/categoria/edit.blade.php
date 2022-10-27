@@ -10,9 +10,16 @@
             <input type="text" class="form-control" id="tipo" name="tipo" placeholder="tipo" value="{{ $categoria->tipo }}" required>
             <label for="tipo">Tipo</label>
         </div>
+        <div class="mb-3">
+            @if(isset($categoria->foto))
+                <img src="{{ asset('storage'). '/'. $categoria->foto }}" class="img-miniatura" alt="foto">
+            @endif
+            <input type="file" name="foto" id="foto" class="form-control">
+        </div>
     </form>
     <button type="submit" class="btn btn-outline-secondary">Guardar</button>
 @endsection
+
 @section('scripts')
         <script>
             (() => {

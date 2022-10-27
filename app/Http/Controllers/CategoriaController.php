@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
 use Gate;
@@ -37,12 +38,20 @@ class CategoriaController extends Controller
 
     public function store(Request $request)
     {
-        $tipo = $request->tipo;
-        
-        Categoria::create($request->all());
+        $datosCatgoria = $request->except('_token');
+        if($request->hasFile('foto'))
+        {
+            $datosCatgoria['foto'] = $request->file('foto')->store('uploads', 'public');
+        }
 
-        return redirect()->route('categoria.index')
-            ->with('exito', 'categoria se ha registrado satisfatoriamente.');
+        Categoria::insert($datosCatgoria);
+        return redirect()->route('categoria.index')->with('exito', 'Categoria se ha registrado satisfatoriamente.');
+        // $tipo = $request->tipo;
+        
+        // Categoria::create($request->all());
+
+        // return redirect()->route('categoria.index')
+        //     ->with('exito', 'categoria se ha registrado satisfatoriamente.');
     }
 
     public function show($id)
@@ -66,8 +75,20 @@ class CategoriaController extends Controller
     public function update(Request $request, $id)
     {
         $categoria = Categoria::findOrFail($id);
-        $categoria->update($request->all());
-        return redirect()->route('categoria.index')->with('exito','¡El registro se ha actualizado satisfactoriamente!');
+        $datosCatgoria = $request->except(['_token', '_method']); 
+        if($request->hasFile('foto'))
+        {
+            
+            Storage::delete('public/'. $categoria->foto);
+            $datosCatgoria['foto'] = $request->file('foto')->store('uploads', 'public');
+        }
+
+        categoria::where('id', $id)->update($datosCatgoria);
+        return redirect()->route('categoria.index')
+            ->with('Exito', 'categoria se ha actualizado satisfactoriamente');
+        // $categoria = Categoria::findOrFail($id);
+        // $categoria->update($request->all());
+        // return redirect()->route('categoria.index')->with('exito','¡El registro se ha actualizado satisfactoriamente!');
 
     }
 
@@ -76,12 +97,24 @@ class CategoriaController extends Controller
     {
         if(Gate::denies('administrador'))
         {
-            // abort(403);
             return redirect()->route('categoria.index');
         }
-        $categoria = categoria::findOrFail($id);
-        $categoria->delete();
+        $categoria = Categoria::findOrFail($id);
+
+        if(Storage::delete('storage', 'public/'. $categoria->foto))
+        {
+            
+            $categoria->delete();
+        }
         return redirect()->route('categoria.index');
+        // if(Gate::denies('administrador'))
+        // {
+        //     // abort(403);
+        //     return redirect()->route('categoria.index');
+        // }
+        // $categoria = categoria::findOrFail($id);
+        // $categoria->delete();
+        // return redirect()->route('categoria.index');
     }
 
 
