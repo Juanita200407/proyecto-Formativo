@@ -10,19 +10,21 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $producto = Producto::all();
-        $categoria = Categoria::all();
-        return view('welcome', compact('producto', 'categoria'));
+        $productos = Producto::all();
+        $categorias = Categoria::all();
+        return view('welcome', compact('productos', 'categorias'));
     }
 
-    public function welcomeByCategoria($categoria)
+    public function welcomeByCategoria($id)
     {
-        $producto = Producto::all();
-        $categoria = Categoria::all();
-       $categoria = Categoria::where('tipo', '=', $categoria)->first();
-       $producto = Producto::where('categorias_id', '=', $categoria->id)->get();
-    //    dd($producto);
-       return view('welcome', compact('categoria', 'producto'));
+        $productos = Producto::all();
+        $categorias = Categoria::all();
+
+        $categorias = Categoria::where('tipo', '=', $id)->first();
+        // dd($categoria);
+        $productos = Producto::where('categorias_id', '=', $categorias->id)->get();
+    
+       return view('producto', compact('categorias', 'productos'));
     }
 
 

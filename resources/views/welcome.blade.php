@@ -35,19 +35,19 @@
             <div class="swiper-container mySwiper">
              
                     <div class="swiper-wrapper">
-                        @foreach ($categoria as $item)
-                        <div class="swiper-slide">
-                            <img src="{{ asset('storage'). '/'. $item->foto }}"
-                                alt="">
-                            <div class="card-description">
-                                <div class="card-title">
-                                    <h4>{{ $item->tipo }}</h4>
-                                </div>
-                                <div class="card-link">
-                                    <a href="{{ route('producto.item', $item->tipo) }}">Ver más</a>
+                        @foreach ($categorias as $item)
+                            <div class="swiper-slide">
+                                <img src="{{ asset('storage'). '/'. $item->foto }}"
+                                    alt="">
+                                <div class="card-description">
+                                    <div class="card-title">
+                                        <h4>{{ $item->tipo }}</h4>
+                                    </div>
+                                    <div class="card-link">
+                                        <a href="{{ route('menu.item', $item->tipo) }}">Ver más</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
              
@@ -56,33 +56,7 @@
             </div>
     </div>
 
-    <h2 class="text-center p-5 my-5">Menu</h2>
-    <div class="col-10 ps-5">
-        <div class="row">
-            @foreach ($producto as $item)
-            <div class="col-md col-12 justify-content-center mb-5">
-                <div class="card m-auto" style="auto">
-                <img src="{{ asset('storage'). '/'. $item->foto }}" class="card-img-top" height="120" alt="">
-                <div class="card-body">
-                    <h5 class="card-title my-2">{{ $item->nombre }}</h5>
-                    <div class="d-card-text">Descrpcion:
-                        {{ $item->tipo }}
-                    </div>
-                    <div class="d-card-text">Descrpcion:
-                        {{ $item->descripcion }}
-                    </div>
-                    <div class="d-card-text">Tamaño:
-                        {{ $item->tamaño }}
-                    </div>
-                    <div class="d-card-text">Precio:
-                        {{ $item->precio }}
-                    </div>
-                </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
+
     
 
     {{-- <div class="about-us section-padding" data-scroll-index='1'> --}}

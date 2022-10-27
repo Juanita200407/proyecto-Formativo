@@ -39,7 +39,7 @@ Route::get('/', [FrontController::class, 'index']);
 // Route::get('/', [HomeController::class, 'index']);
 
 
-Route::get('/producto/{id}', [FrontController::class, 'welcomeByCategoria'])->name('producto.item');
+Route::get('/menu/{id}', [FrontController::class, 'welcomeByCategoria'])->name('menu.item');
 
 
 
