@@ -22,7 +22,7 @@
             </a>
           </div>
           <a class="navbar-brand" href="#">
-            <a href="{{ route('login') }}" class="btn">Ingresar</a>   
+            <a href="{{ route('clientes.create') }}" class="btn">Ingresar</a>   
         </div>
       </nav>
     <div class="container  text-center mt-1">
@@ -33,6 +33,7 @@
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-container mySwiper">
+        
              
                     <div class="swiper-wrapper">
                         @foreach ($categorias as $item)
@@ -43,6 +44,14 @@
                                     <div class="card-title">
                                         <h4>{{ $item->tipo }}</h4>
                                     </div>
+                                    <div class="card" style="width: 18rem;">
+                    <img src="images/hamburguesa.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                    </div>
                                     <div class="card-link">
                                         <a href="{{ route('menu.item', $item->tipo) }}">Ver más</a>
                                     </div>
@@ -50,11 +59,10 @@
                             </div>
                         @endforeach
                     </div>
-             
-             
-        
             </div>
     </div>
+
+    
 
 
     
