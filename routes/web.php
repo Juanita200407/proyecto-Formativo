@@ -6,6 +6,8 @@ use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\PedidosController;
+
 
 // use App\Http\Controllers\HomeController;
 
@@ -49,6 +51,8 @@ Route::resource('producto', ProductoController::class)->middleware('auth');
 Route::resource('usuarios', UsuariosController::class)->middleware('auth');
 Route::resource('categoria', CategoriaController::class)->middleware('auth');
 Route::resource('clientes', ClientesController::class)->middleware('auth');
+Route::resource('pedidos', PedidosController::class)->middleware('auth');
+
 
 
 

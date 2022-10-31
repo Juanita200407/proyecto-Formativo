@@ -22,7 +22,7 @@
             </a>
           </div>
           <a class="navbar-brand" href="#">
-            <a href="" class="btn">Ingresar</a>   
+            <a href="{{ route('login') }}" class="btn">Ingresar</a>   
         </div>
       </nav>
     <div class="container  text-center mt-1">

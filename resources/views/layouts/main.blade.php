@@ -19,6 +19,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @can(['administrador'])
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Categoria
@@ -30,15 +31,25 @@
                             @endcan
                         </ul>
                     </li>
+                    @endcan
+                    @can(['administrador'])
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Producto
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('producto.index')}}">listar</a></li>
-                            @can(['administrador'])
                             <li><a class="dropdown-item" href="{{ route('producto.create')}}">crear menu</a></li>
-                            @endcan
+                        </ul>
+                    </li>
+                    @endcan
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Pedidos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">listar</a></li>
+                            <li><a class="dropdown-item" href="#">crear menu</a></li>
                         </ul>
                     </li>
                     @can(['administrador'])
@@ -46,6 +57,7 @@
                         <a href="{{ route('usuarios.index') }}" class="nav-link">Usuarios</a>
                     </li>
                     @endcan
+
 
                 </ul>
                 <form class="d-flex" role="search">

@@ -14,7 +14,7 @@
             <label for="descripcion">Descripcion</label>
         </div>
         <div class="form-floating mb-3">
-            <select class="form-select" id="tamaño" name="tamaño">
+            <select class="form-select" id="tamaño" name="tamaño" required>
                 <option selected value="" disabled>Seleccione...</option>
                 <option value="Grande">Grande</option>
                 <option value="Mediana">Mediana</option>
@@ -22,13 +22,19 @@
               </select>
               <label for="tamaño">Tamaño</label>
         </div>
-        <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="cantidad" required>
-            <label for="cantidad">Cantidad</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="precio" name="precio" placeholder="precio" required>
-            <label for="precio">Precio</label>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="cantidad" required>
+                    <label for="cantidad">Cantidad</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="precio" name="precio" placeholder="precio" required>
+                    <label for="precio">Precio</label>
+                </div>
+            </div>
         </div>
         <div class="form-floating mb-3">
             <select name="categorias_id" id="categorias_id" class="form-select">

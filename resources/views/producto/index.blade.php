@@ -15,12 +15,14 @@
         <button type="button" class ="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-    <div class="mt-3">
-        <a href="{{ route('producto.create') }}" class="btn btn-light" id="btn">
-            Crear nuevo producto
-        </a>
+    @can(['administrador'])
+        <div class="mt-3">
+            <a href="{{ route('producto.create') }}" class="btn btn-light" id="btn">
+                Crear nuevo producto
+            </a>
+        </div>
+    @endcan
         
-    </div>
     <div class="my-3 text-center">
         @if(count($producto) > 0)
         <table class="table table-hover">
@@ -45,14 +47,16 @@
 
                 <td class="d-flex ">
                     <a href="{{ route('producto.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
-                    <a href="{{ route('producto.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <form action="{{ route('producto.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-outline-danger rounded-circle">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </form>
+                    @can(['administrador'])
+                        <a href="{{ route('producto.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <form action="{{ route('producto.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-outline-danger rounded-circle">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </form>
+                    @endcan
                 </td>
             </tr>
                 @endforeach

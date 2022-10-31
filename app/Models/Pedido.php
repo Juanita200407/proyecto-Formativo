@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class Clientes extends Model
+class Pedido extends Model
 {
     use SoftDeletes;
     protected $fillable = [
@@ -13,7 +14,9 @@ class Clientes extends Model
         'apellido',
         'telefono',
         'direccion',
-        'email',
-        'contraseña'
+        'cantidad',
+        'productos_id'
     ];
+
 }
+

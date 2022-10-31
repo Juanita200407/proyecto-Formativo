@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clientes;
+use App\Models\Pedido;
 use Illuminate\Http\Request;
+use App\Models\Producto;
+use App\Models\Categoria;
 
-class ClientesController extends Controller
+class PedidosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,7 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        $clientes = Clientes::all();
-        return view('clientes.index', compact('clientes'));
+        
     }
 
     /**
@@ -42,45 +43,53 @@ class ClientesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Clientes  $clientes
+     * @param  \App\Models\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function show(Clientes $clientes)
+    public function show(Pedido $pedido)
     {
-        //
+        $pedidos = Pedido::findOrFail($id);
+
+        return view('pedidos.show', compact('pedidos'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Clientes  $clientes
+     * @param  \App\Models\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function edit(Clientes $clientes)
+    public function edit(Pedido $pedido)
     {
-        //
+        // $cantidad = $request->cantidad;
+
+        return view('pedidos.edit', compact('pedidos'));
+        
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Clientes  $clientes
+     * @param  \App\Models\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Clientes $clientes)
+    public function update(Request $request, $id)
     {
-        //
+        $pedidos = Pedido::findOrFail($id);
+        $pedidos->update($request->all());
+        return redirect()->route('pedidos.index')->with('exito','¡El pedidos se ha actualizado satisfactoriamente!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Clientes  $clientes
+     * @param  \App\Models\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Clientes $clientes)
+    public function destroy(Pedido $pedido)
     {
-        //
+        $pedidos->delete();
+        return redirect()->route('pedidos.index');
     }
 }
