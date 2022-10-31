@@ -22,7 +22,7 @@
             </a>
           </div>
           <a class="navbar-brand" href="#">
-            <a href="{{ route('login') }}" class="btn">Ingresar</a>   
+            <a href="{{ route('clientes.create') }}" class="btn">Ingresar</a>   
         </div>
       </nav>
     <div class="container  text-center mt-1">
@@ -50,11 +50,10 @@
                             </div>
                         @endforeach
                     </div>
-             
-             
-        
             </div>
     </div>
+
+    
 
 
     

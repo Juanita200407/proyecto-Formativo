@@ -17,6 +17,9 @@
     <div class="col-10 ps-5">
         <div class="row">
             @foreach ($productos as $item)
+            <div class="compra">
+                <a href="{{ route('clientes.create') }}" class="btn btn-outline-success"><i class="fa-solid fa-cart-shopping">Compra</a>
+            </div>
             <div class="col-md col-12 justify-content-center mb-5">
                 <div class="card m-auto" style="auto">
                 <img src="{{ asset('storage'). '/'. $item->foto }}" class="card-img-top" height="80;" width=";" alt="">
