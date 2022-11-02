@@ -22,10 +22,10 @@
             </div>
             <div class="col-md col-12 justify-content-center mb-5">
                 <div class="card m-auto" style="auto">
-                <img src="{{ asset('storage'). '/'. $item->foto }}" class="card-img-top" height="80;" width=";" alt="">
+                    <img src="{{ asset('storage'). '/'. $item->foto }}" class="card-img-top" height="80;" width=";" alt="">
                 <div class="card-body">
                     <h5 class="card-title my-2">{{ $item->nombre }}</h5>
-                    <div class="d-card-text">Descrpcion:
+                    <div class="d-card-text">Descripcion:
                         {{ $item->descripcion }}
                     </div>
                     <div class="d-card-text">Tamaño:
