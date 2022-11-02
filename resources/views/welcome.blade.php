@@ -18,11 +18,10 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
               <img src="{{ asset('images/alitas.png') }}" alt="Logo" width="150" height="55" class="d-inline-block align-text-center">
-              Alitas de mary
             </a>
           </div>
           <a class="navbar-brand" href="#">
-            <a href="{{ route('login') }}" class="btn">Ingresar</a>   
+            <a href="{{ route('clientes.create') }}" class="btn">Ingresar</a>   
         </div>
       </nav>
     <div class="container  text-center mt-1">
@@ -50,21 +49,17 @@
                             </div>
                         @endforeach
                     </div>
-             
-             
-        
             </div>
     </div>
+
+    
 
 
     
 
-    {{-- <div class="about-us section-padding" data-scroll-index='1'> --}}
-        {{-- <div class="container">
+<div class="about-us section-padding" data-scroll-index='1'>
+         <div class="container">
             <div class="row">
-                <div class="col-md-12 section-title text-center">
-                    <h3>Categoria</h3>
-                </div>
                 <div class="col-sm-3">
                     <div class="card p-3 my-3">
                         <img src="{{ asset('images/hamburguesa.png') }}" class="card-img-top" id="foto" alt="Hamburguesa">
@@ -73,10 +68,26 @@
                       </div>
                     </div>
                 </div>
+                <div class="col-sm-3">
+                    <div class="card p-3 my-3">
+                        <img src="{{ asset('images/alita.png') }}" class="card-img-top" id="foto" alt="Alita">
+                      <div class="card-body">
+                        <h5 class="section-title text-center"><a href="#" class="card-link text-decoration-none text-dark">alitas</a></h5>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card p-3 my-3">
+                        <img src="{{ asset('images/choripapa.png') }}" class="card-img-top" id="foto" alt="Choripapas">
+                      <div class="card-body">
+                        <h5 class="section-title text-center"><a href="#" class="card-link text-decoration-none text-dark">choripapas</a></h5>
+                      </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div> --}}
-
+    </div> 
     
 
     
