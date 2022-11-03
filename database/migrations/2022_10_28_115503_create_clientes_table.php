@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pedidos', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
             $table->string('nombreCliente');
             $table->string('apellido');
             $table->string('telefono');
@@ -34,9 +35,12 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedidos');
-        Schema::table('pedidos', function (Blueprint $table) {
-            $table->dropForeign('pedidos_productos_id_foreign');
+        Schema::dropIfExists('clientes');
+        Schema::table('clientes', function (Blueprint $table) {
+            $table->dropForeign('clientes_productos_id_foreign');
+        });
+        Schema::table('clientes', function (Blueprint $table) {
+            $table->dropForeign('clientes_user_id_foreign');
         });
     }
 };

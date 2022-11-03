@@ -20,7 +20,9 @@
             <div class="card">
                 <img src="{{ asset('storage'). '/'. $item->foto }}" class="card-img-top" height="260;" width="80;" alt="">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">
+                    {{ $item->nombre }}
+                </h5>
                 <div class="d-card-text">Descrpcion:
                     {{ $item->descripcion }}
                 </div>
@@ -31,7 +33,7 @@
                     ${{ $item->precio }}
                 </div>
                 <div class="d-card-button compra">
-                    <a href="{{ route('pedidos.create') }}" class="btn btn-outline-success"><i class="fa-solid fa-cart-shopping"></i>Compra</a>
+                    <a href="{{ route('clientes.create') }}" class="btn btn-outline-success"><i class="fa-solid fa-cart-shopping"></i>Compra</a>
                 </div>
               </div>
             </div>

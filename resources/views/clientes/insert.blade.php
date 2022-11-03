@@ -4,8 +4,12 @@
 @section('titulo', 'Registra tus datos')
 
 @section('content')
-    <form action="{{ route('pedidos.store') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+    <form action="{{ route('clientes.store') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
         @csrf 
+        <div class="form-floating mb-3">
+            <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ auth()->user()->id }}" required>
+            <label for="nombreCliente">id user</label>
+        </div>
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" placeholder="nombreCliente" required>
             <label for="nombreCliente">Nombre</label>

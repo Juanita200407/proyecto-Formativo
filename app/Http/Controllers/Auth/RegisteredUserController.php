@@ -49,6 +49,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route("pedidos.create"));
+        return redirect(route("clientes.create"));
     }
 }

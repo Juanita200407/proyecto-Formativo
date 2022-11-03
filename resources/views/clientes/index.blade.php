@@ -1,14 +1,8 @@
 @extends('layouts.main')
 
-@section('titulo', 'pedido')
+@section('titulo', 'cliente')
 
 @section('content')
-    @if($query)
-        <div class="alert alert-warning" role="alert">
-            <p>A continuación se presentan los resultados de la búsqueda: <span class="fw-bold">{{ $query }}</span></p>
-        </div>
-        
-    @endif
     @if($mensaje = Session::get('exito'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <p>{{ $mensaje }}</p>
@@ -17,14 +11,13 @@
     @endif
     @can(['administrador'])
         <div class="mt-3">
-            <a href="{{ route('pedido.create') }}" class="btn btn-light" id="btn">
-                Crear nuevo pedido
+            <a href="{{ route('clientes.create') }}" class="btn btn-light" id="btn">
+                Crear nuevo cliente
             </a>
         </div>
     @endcan
         
     <div class="my-3 text-center">
-        @if(count($pedidos) > 0)
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -37,33 +30,29 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach($pedidos as $item)
-            <tr>
-                <td>{{ $item->nombreCliente }}</td>
-                <td>{{ $item->apellido }}</td>
-                <td>{{ $item->telefono }}</td>
-                <td>{{ $item->direccion }}</td>
-                <td>{{ $item->cantidad }}</td>
+            @foreach($clienteUsuario as $item)
+                <tr>
+                    <td>{{ $item->nombreCliente }}</td>
+                    <td>{{ $item->apellido }}</td>
+                    <td>{{ $item->telefono }}</td>
+                    <td>{{ $item->direccion }}</td>
+                    <td>{{ $item->cantidad }}</td>
 
-                <td class="d-flex">
-                    <a href="{{ route('pedidos.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
-                        <a href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <form action="{{ route('pedidos.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-outline-danger rounded-circle">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </form>
-                </td>
-            </tr>
-                @endforeach
+                    <td class="d-flex">
+                        <a href="{{ route('clientes.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
+                            <a href="{{ route('clientes.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <form action="{{ route('clientes.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-outline-danger rounded-circle">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </form>
+                    </td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
-        {{ $pedidos->links() }}
-        @else
-            <p>La búsqueda no encontró resultados</p>
-        @endif
     </div>
 @endsection
 

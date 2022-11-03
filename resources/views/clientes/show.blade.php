@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('titulo', 'Detalle del pedidos')
+@section('titulo', 'Detalle del clientes')
 
 @section('content')
     <section class="content container-fluid mx-3">
@@ -11,30 +11,23 @@
                         
                         <div class="form-group">
                             <strong>Nombre:</strong>
-                            {{ $pedidos->nombreCliente }}
+                            {{ $clientes->nombreCliente }}
                         </div>
                         <div class="form-group">
                             <strong>Apellido:</strong>
-                            {{ $pedidos->apellido }}
+                            {{ $clientes->apellido }}
                         </div>
                         <div class="form-group">
                             <strong>Telefono:</strong>
-                            {{ $pedidos->telefono }}
+                            {{ $clientes->telefono }}
                         </div>
                         <div class="form-group">
                             <strong>Direccion:</strong>
-                            {{ $pedidos->direccion }}
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="cantidad" required>
-                            <label for="cantidad">Cantidad</label>
-                            <div class="invalid-feedback">
-                                Debe ingresar la dirección.
-                            </div>
+                            {{ $clientes->direccion }}
                         </div>
                         <div class="form-group">
                             <strong>Producto:</strong>
-                            {{ $pedidos->producto }}
+                            {{ $clientes->producto }}
                         </div>
                     </div>
                     <div class="float-right p-2">
