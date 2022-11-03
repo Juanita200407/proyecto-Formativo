@@ -15,13 +15,15 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('nombreCliente');
             $table->string('apellido');
             $table->string('telefono');
             $table->string('direccion');
             $table->foreignId('productos_id')->constrained('productos');
             $table->integer('cantidad');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

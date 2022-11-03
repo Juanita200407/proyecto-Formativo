@@ -12,7 +12,7 @@
         </div>
         <div class="mb-3">
             <label for="foto">Foto</label>
-            <input type="file" name="foto" id="foto" class="form-control">
+            <input type="file" name="foto" id="foto" class="form-control"  height="10;" width="80;">
         </div>
         <button type="submit" class="btn btn-outline-success">Guardar</button>
         <a class="btn btn-outline-danger" href="{{ route('categoria.index') }}">Cancelar</a>

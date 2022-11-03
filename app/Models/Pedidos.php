@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class Pedido extends Model
+class pedidos extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'nombre',
+        'nombreCliente',
         'apellido',
         'telefono',
         'direccion',

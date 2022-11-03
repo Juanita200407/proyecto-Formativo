@@ -40,9 +40,9 @@
                             {{ $producto->categoria }}
                         </div>
                     </div>
-                </div>
-                <div class="float-right p-2">
-                    <a class="btn btn-outline " id="btn" href="{{ route('producto.index') }}"><i class="fa-solid fa-arrow-left"></i>Regresar</a>
+                    <div class="float-right p-2">
+                        <a class="btn btn-outline " id="btn" href="{{ route('producto.index') }}"><i class="fa-solid fa-arrow-left"></i>Regresar</a>
+                    </div>
                 </div>
             </div>
         </div>

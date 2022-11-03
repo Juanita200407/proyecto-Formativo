@@ -13,8 +13,32 @@
 </head>
 <body class="fondo">
     
-    <h2 class="text-center p-5 my-5">Menu</h2>
-    <div class="col-10 ps-5">
+    <h2 class="text-center p-5">Menu</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4 p-5">
+        <div class="col">
+            @foreach ($productos as $item)
+            <div class="card">
+                <img src="{{ asset('storage'). '/'. $item->foto }}" class="card-img-top" height="260;" width="80;" alt="">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <div class="d-card-text">Descrpcion:
+                    {{ $item->descripcion }}
+                </div>
+                <div class="d-card-text">Tamaño:
+                    {{ $item->tamaño }}
+                </div>
+                <div class="d-card-text">Precio:
+                    ${{ $item->precio }}
+                </div>
+                <div class="d-card-button compra">
+                    <a href="{{ route('pedidos.create') }}" class="btn btn-outline-success"><i class="fa-solid fa-cart-shopping"></i>Compra</a>
+                </div>
+              </div>
+            </div>
+                
+            @endforeach
+        </div>
+    {{-- <div class="col-10 ps-5">
         <div class="row">
             @foreach ($productos as $item)
             <div class="col-md col-12 justify-content-center mb-5">
@@ -39,7 +63,7 @@
             </div>
             @endforeach
         </div>
-    </div>
+    </div> --}}
 <script src="{{ asset('css/bootstrap/js/bootstrap.bundle.js') }}"></script>
 
 </body>

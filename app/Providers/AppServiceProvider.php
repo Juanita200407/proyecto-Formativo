@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
-
+use User;
+use Rol;
+use Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+       //
     }
 
     /**

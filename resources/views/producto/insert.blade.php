@@ -36,22 +36,29 @@
                 </div>
             </div>
         </div>
-        <div class="form-floating mb-3">
-            <select name="categorias_id" id="categorias_id" class="form-select">
-                <option selected value="">Seleccione...</option>
-                @foreach ($categoria as $item)
-                    <option value="{{ $item->id }}">{{ $item->tipo }}</option>
-                @endforeach
-            </select>
-            <label for="categorias_id">Categoria</label>
-        </div>
-        <div class="mb-3">
-            <label for="foto">Foto</label>
-            <input type="file" name="foto" id="foto" class="form-control">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <select name="categorias_id" id="categorias_id" class="form-select" required>
+                        <option selected value="" disabled>Seleccione...</option>
+                        @foreach ($categoria as $item)
+                        <option value="{{ $item->id }}">{{ $item->tipo }}</option>
+                        @endforeach
+                    </select>
+                    <label for="categorias_id">Categoria</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="file" name="foto" id="foto" class="form-control h-100 w-100">
+                    <label for="foto">Foto</label>
+                </div>  
+            </div>
         </div>
         <button type="submit" class="btn btn-outline-success">Guardar</button>
         <a class="btn btn-outline-danger" href="{{ route('producto.index') }}">Cancelar</a>
     </form>
+    </div>
 @endsection
 
 @section('scripts')
