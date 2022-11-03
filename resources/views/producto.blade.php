@@ -17,12 +17,15 @@
     <div class="col-10 ps-5">
         <div class="row">
             @foreach ($productos as $item)
+            <div class="compra">
+                <a href="{{ route('clientes.create') }}" class="btn btn-outline-success"><i class="fa-solid fa-cart-shopping">Compra</a>
+            </div>
             <div class="col-md col-12 justify-content-center mb-5">
                 <div class="card m-auto" style="auto">
-                <img src="{{ asset('storage'). '/'. $item->foto }}" class="card-img-top" height="80;" width=";" alt="">
+                    <img src="{{ asset('storage'). '/'. $item->foto }}" class="card-img-top" height="80;" width=";" alt="">
                 <div class="card-body">
                     <h5 class="card-title my-2">{{ $item->nombre }}</h5>
-                    <div class="d-card-text">Descrpcion:
+                    <div class="d-card-text">Descripcion:
                         {{ $item->descripcion }}
                     </div>
                     <div class="d-card-text">Tamaño:
@@ -37,6 +40,8 @@
             @endforeach
         </div>
     </div>
+    
+<button type="button" class="btn btn-outline-dark align-bottom">Regresar</button>
 <script src="{{ asset('css/bootstrap/js/bootstrap.bundle.js') }}"></script>
 
 </body>
