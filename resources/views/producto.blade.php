@@ -41,7 +41,7 @@
         </div>
     </div>
     
-<button type="button" class="btn btn-outline-dark align-bottom">Regresar</button>
+<button type="button" class="btn btn-outline-dark bottom-up">Regresar</button>
 <script src="{{ asset('css/bootstrap/js/bootstrap.bundle.js') }}"></script>
 
 </body>
