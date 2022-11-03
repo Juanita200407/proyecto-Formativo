@@ -46,7 +46,7 @@
         </div>
         <div class="mt-3">
             <button class="btn btn-outline-dark ml-4 w-100" id="btn">
-                {{ __('Log in') }}
+                {{ __('Login') }}
             </button>
         </div>
         <div class="flex items-center position-absolute bottom-0 end-0 mt-2">
@@ -120,7 +120,7 @@
                     @endif
 
                 <x-button class="ml-3">
-                    {{ __('Log in') }}
+                    {{ __('Login') }}
                 </x-button>
             </div>
         </form>

@@ -22,7 +22,7 @@
             </a>
           </div>
           <a class="navbar-brand" href="#">
-            <a href="{{ route('clientes.create') }}"  type="button" class="btn btn-dark">Ingresar</a>   
+            <a href="{{ route('categoria.index') }}"  type="button" class="btn btn-dark">Ingresar</a>   
         </div>
       </nav>
     <div class="container  text-center mt-1">
@@ -37,12 +37,13 @@
                     <div class="swiper-wrapper">
                         @foreach ($categorias as $item)
                             <div class="swiper-slide">
-                                <img src="{{ asset('storage'). '/'. $item->foto }}"
+                                <img src="{{ asset('images/imaguehamburguesa.jpeg') }}"
                                     alt="">
                                 <div class="card-description">
                                     <div class="card-title">
                                         <h4>{{ $item->tipo }}</h4>
                                     </div>
+                                    
                                     <div class="card-link">
                                         <a href="{{ route('menu.item', $item->tipo) }}">Ver más</a>
                                     </div>
