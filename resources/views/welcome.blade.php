@@ -18,17 +18,17 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
               <img src="{{ asset('images/alitas.png') }}" alt="Logo" width="150" height="55" class="d-inline-block align-text-center">
-              Alitas de mary
+             
             </a>
           </div>
           <a class="navbar-brand" href="#">
-            <a href="{{ route('login') }}" class="btn">Ingresar</a>   
+            <a href="{{ route('categoria.index') }}"  type="button" class="btn btn-dark">Ingresar</a>   
         </div>
       </nav>
     <div class="container  text-center mt-1">
             <h1 class="text-dark">Bienvenidos estimado cliente</h1>
             <div class="col-md-12 section-title text-center my-5">
-                <h3>Categoria</h3>
+                
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -37,12 +37,13 @@
                     <div class="swiper-wrapper">
                         @foreach ($categorias as $item)
                             <div class="swiper-slide">
-                                <img src="{{ asset('storage'). '/'. $item->foto }}"
+                                <img src="{{ asset('images/imaguehamburguesa.jpeg') }}"
                                     alt="">
                                 <div class="card-description">
                                     <div class="card-title">
                                         <h4>{{ $item->tipo }}</h4>
                                     </div>
+                                    
                                     <div class="card-link">
                                         <a href="{{ route('menu.item', $item->tipo) }}">Ver más</a>
                                     </div>
@@ -50,11 +51,10 @@
                             </div>
                         @endforeach
                     </div>
-             
-             
-        
             </div>
     </div>
+
+    
 
 
     
@@ -68,6 +68,14 @@
                 <div class="col-sm-3">
                     <div class="card p-3 my-3">
                         <img src="{{ asset('images/hamburguesa.png') }}" class="card-img-top" id="foto" alt="Hamburguesa">
+                      <div class="card-body">
+                        <h5 class="section-title text-center"><a href="#" class="card-link text-decoration-none text-dark">Hamburguesas</a></h5>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card p-3 my-3">
+                        <img src="{{ asset('images/imagehotdog.png') }}" class="card-img-top" id="foto" alt="Hamburguesa">
                       <div class="card-body">
                         <h5 class="section-title text-center"><a href="#" class="card-link text-decoration-none text-dark">Hamburguesas</a></h5>
                       </div>
