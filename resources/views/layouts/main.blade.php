@@ -48,7 +48,7 @@
                             Pedidos
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('clientes.index')}}">listar</a></li>
+                            <li><a class="dropdown-item" href="{{ route('pedidos.index')}}">listar</a></li>
                             <li><a class="dropdown-item" href="#">crear menu</a></li>
                         </ul>
                     </li>

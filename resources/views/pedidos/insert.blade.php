@@ -4,7 +4,7 @@
 @section('titulo', 'Registra tus datos')
 
 @section('content')
-    <form action="{{ route('clientes.store') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+    <form action="{{ route('pedidos.store') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
         @csrf 
         <div class="form-floating mb-3">
             <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ auth()->user()->id }}" required>

@@ -33,7 +33,7 @@
                     ${{ $item->precio }}
                 </div>
                 <div class="d-card-button compra">
-                    <a href="{{ route('clientes.create') }}" class="btn btn-outline-success"><i class="fa-solid fa-cart-shopping"></i>Compra</a>
+                    <a href="{{ route('pedidos.create') }}" class="btn btn-outline-success"><i class="fa-solid fa-cart-shopping"></i>Compra</a>
                 </div>
               </div>
             </div>

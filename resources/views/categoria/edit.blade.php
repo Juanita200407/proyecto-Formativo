@@ -14,32 +14,31 @@
             @if(isset($categoria->foto))
                 <img src="{{ asset('storage'). '/'. $categoria->foto }}" class="img-miniatura" alt="foto">
             @endif
-            <input type="file" name="foto" id="foto" class="form-control">
+            <input type="file" name="foto" id="foto" class="form-control" required>
         </div>
+        <button type="submit" class="btn btn-outline-secondary">Guardar</button>
     </form>
-    <button type="submit" class="btn btn-outline-secondary">Guardar</button>
 @endsection
-
 @section('scripts')
-        <script>
-            (() => {
-            'use strict'
-    
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                const forms = document.querySelectorAll('.needs-validation')
-    
-                // Loop over them and prevent submission
-                Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                    }
-    
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
-    
-        </script>
+    <script>
+        (() => {
+        'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+
+    </script>
 @endsection

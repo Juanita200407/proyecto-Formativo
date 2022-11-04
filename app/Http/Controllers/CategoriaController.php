@@ -83,9 +83,19 @@ class CategoriaController extends Controller
             $datosCatgoria['foto'] = $request->file('foto')->store('uploads', 'public');
         }
 
-        categoria::where('id', $id)->update($datosCatgoria);
+        Categoria::where('id', $id)->update($datosCatgoria);
         return redirect()->route('categoria.index')
             ->with('Exito', 'categoria se ha actualizado satisfactoriamente');
+
+        // $categoria = Categoria::findOrFail($id);
+
+        // $categoria->tipo = $request->tipo;
+        // $categoria->foto = $request->foto;
+    
+        //     // return $request;
+        // $categoria->save();
+        // return redirect()->route('categoria.index')->with('exito','¡El registro se ha actualizado satisfactoriamente!');
+
         // $categoria = Categoria::findOrFail($id);
         // $categoria->update($request->all());
         // return redirect()->route('categoria.index')->with('exito','¡El registro se ha actualizado satisfactoriamente!');
@@ -104,7 +114,7 @@ class CategoriaController extends Controller
         if(Storage::delete('storage', 'public/'. $categoria->foto))
         {
             
-            $categoria->deleting();
+            $categoria->delete();
         }
         return redirect()->route('categoria.index');
         // if(Gate::denies('administrador'))
