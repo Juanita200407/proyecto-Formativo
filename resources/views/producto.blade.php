@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>Menu</title>
 </head>
 <body class="fondo">
     
-    <h2 class="text-center p-5 my-5">Menu</h2>
+    <h2 class="text-center mt-6 ">Menu</h2>
     <div class="col-10 ps-5">
         <div class="row">
             @foreach ($productos as $item)
@@ -41,10 +41,8 @@
         @endforeach
     </div>
 </div>
-<div class="container">
-   <div class="col-sm-9">
-      <div class="card-body">
-            <div class="card" style="width: 18rem;">
+    <div class="card-group">
+           <div class="card" style="width: 18rem;">
             <img src="{{ asset('images/hamburguesa.png') }}">
             <div class="card-body">
                 <h5 class="card-title">Hamburguesa de Pollo</h5>
@@ -53,10 +51,10 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Precio:9.000</li>
             </ul>
-            
-            <button type="button" class="btn btn-outline-dark">Comprar</button>
-      </div>
-   </div>
+            <div class="card-link">
+                <a href="{{ route('Login') }}">Comprar</a>
+            </div>
+        </div>
        <br></br>
     
     <div class="card" style="width: 18rem;">
@@ -68,7 +66,8 @@
     <ul class="list-group list-group-flush">
         <li class="list-group-item">Precio:15.000</li>
     </ul>
-    <button type="button" class="btn btn-outline-dark">Comprar</button>
+    <div class="card-link">
+        <a href="{{ route('Login') }}">Comprar</a>
     </div>  
 
     <br></br>
@@ -82,13 +81,13 @@
     <ul class="list-group list-group-flush">
         <li class="list-group-item">Precio:15.000</li>
     </ul>
-    <button type="button" class="btn btn-outline-dark">Comprar</button>
+    <div class="card-link">
+        <a href="{{ route('login') }}">Comprar</a>
     </div>  
     <div class="card-body">
     <button type="button" class="btn btn-outline-dark">Regresar</button>  
     </div>
 </div>
-
 
 
 <script src="{{ asset('css/bootstrap/js/bootstrap.bundle.js') }}"></script>
