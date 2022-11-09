@@ -33,15 +33,64 @@
                     </div>
                     <div class="d-card-text">Precio:
                         {{ $item->precio }}
+                        
                     </div>
                 </div>
-                </div>
             </div>
-            @endforeach
         </div>
+        @endforeach
     </div>
+</div>
+<div class="container">
+   <div class="col-sm-9">
+      <div class="card-body">
+            <div class="card" style="width: 18rem;">
+            <img src="{{ asset('images/hamburguesa.png') }}">
+            <div class="card-body">
+                <h5 class="card-title">Hamburguesa de Pollo</h5>
+                <p class="card-text">Descripcion: tomate,lechuga,cebolla,queso,pollo Y Papa.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Precio:9.000</li>
+            </ul>
+            
+            <button type="button" class="btn btn-outline-dark">Comprar</button>
+      </div>
+   </div>
+       <br></br>
     
-<button type="button" class="btn btn-outline-dark bottom-up">Regresar</button>
+    <div class="card" style="width: 18rem;">
+    <img src="{{ asset('images/hamburguesa.png') }}">
+    <div class="card-body">
+        <h5 class="card-title">Hamburguesa  Criolla</h5>
+        <p class="card-text">Descripcion: carne,huevo,lechuga,cebolla,tomate,queso,tocineta Y Papa.</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Precio:15.000</li>
+    </ul>
+    <button type="button" class="btn btn-outline-dark">Comprar</button>
+    </div>  
+
+    <br></br>
+
+    <div class="card" style="width: 18rem;">
+    <img src="{{ asset('images/hamburguesa.png') }}">
+    <div class="card-body">
+        <h5 class="card-title">Hamburguesa Mixta </h5>
+        <p class="card-text">Descripcion: carne,pollo,lechuga,cebolla,tomate,queso Y Papa.</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Precio:15.000</li>
+    </ul>
+    <button type="button" class="btn btn-outline-dark">Comprar</button>
+    </div>  
+    <div class="card-body">
+    <button type="button" class="btn btn-outline-dark">Regresar</button>  
+    </div>
+</div>
+
+
+
 <script src="{{ asset('css/bootstrap/js/bootstrap.bundle.js') }}"></script>
 
 </body>

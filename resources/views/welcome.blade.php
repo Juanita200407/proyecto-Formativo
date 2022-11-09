@@ -18,7 +18,6 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
               <img src="{{ asset('images/alitas.png') }}" alt="Logo" width="150" height="55" class="d-inline-block align-text-center">
-             
             </a>
           </div>
           <a class="navbar-brand" href="#">
@@ -36,9 +35,9 @@
              
                     <div class="swiper-wrapper">
                         @foreach ($categorias as $item)
+                        <div class="card" style="width: 18rem;">
                             <div class="swiper-slide">
-                                <img src="{{ asset('images/imaguehamburguesa.jpeg') }}"
-                                    alt="">
+                                <img src="{{ asset('categoriaController') }}">
                                 <div class="card-description">
                                     <div class="card-title">
                                         <h4>{{ $item->tipo }}</h4>
@@ -49,6 +48,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         @endforeach
                     </div>
             
@@ -62,10 +62,7 @@
         </div>
     </div> 
 
-    
 
-    
-  
       <!-- Swiper JS -->
       <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
   
@@ -103,13 +100,9 @@
             spaceBetween: 50,
         },
         } 
-        });
+        );
     </script>
-    
 
-
-    
-    
 
 <script src="{{ asset('css/bootstrap/js/bootstrap.bundle.js') }}"></script>
 </body>

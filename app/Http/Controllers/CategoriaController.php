@@ -104,7 +104,7 @@ class CategoriaController extends Controller
         if(Storage::delete('storage', 'public/'. $categoria->foto))
         {
             
-            $categoria->deleting();
+            $categoria->delete();
         }
         return redirect()->route('categoria.index');
         // if(Gate::denies('administrador'))

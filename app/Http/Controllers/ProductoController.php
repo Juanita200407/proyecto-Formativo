@@ -156,7 +156,7 @@ class ProductoController extends Controller
         }
         $producto = Producto::findOrFail($id);
 
-        if(Storage::deleting('storage', 'public/'. $producto->foto))
+        if(Storage::delete('storage', 'public/'. $producto->foto))
         {
             
             $producto->delete();
