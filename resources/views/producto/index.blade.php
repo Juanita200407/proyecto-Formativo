@@ -23,7 +23,7 @@
         </div>
     @endcan
         
-    <div class="my-3 text-center">
+    <div class="my-3 text-center text-capitalize">
         @if(count($producto) > 0)
         <table class="table table-hover">
             <thead>

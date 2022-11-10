@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Producto;
+
+
 
 class pedidos extends Model
 {
@@ -16,8 +19,17 @@ class pedidos extends Model
         'telefono',
         'direccion',
         'cantidad',
+        'precio',
         'productos_id'
     ];
+
+    public static function boot(){
+      parent::boot();
+      self::creating(function($obj){
+        $producto = Producto::find($obj->productos_id);
+        $obj->precio=$obj->cantidad * $producto->precio;
+      });
+    }
 
 }
 

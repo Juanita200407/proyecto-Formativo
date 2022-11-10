@@ -6,13 +6,20 @@
 @section('content')
     <form action="{{ route('categoria.store') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
         @csrf 
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="tipo" name="tipo" placeholder="tipo" required>
-            <label for="tipo">Tipo</label>
-        </div>
-        <div class="mb-3">
-            <label for="foto">Foto</label>
-            <input type="file" name="foto" id="foto" class="form-control"  height="10;" width="80;">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="tipo" name="tipo" placeholder="tipo" required>
+                    <label for="tipo">Tipo</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="file" name="foto" id="foto" class="form-control h-100 w-100 justify-conten-center">
+                    <label for="foto" class="my-0">Foto</label>
+                </div> 
+            </div>
         </div>
         <button type="submit" class="btn btn-outline-success">Guardar</button>
         <a class="btn btn-outline-danger" href="{{ route('categoria.index') }}">Cancelar</a>

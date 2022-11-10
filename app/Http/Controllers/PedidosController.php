@@ -18,6 +18,7 @@ class pedidosController extends Controller
      */
     public function index(Pedidos $id)
     {
+        $pedido = Pedidos::findOrFail($id);
         $usuario = User::all();
 
         $dd = auth()->user()->id;
@@ -42,13 +43,14 @@ class pedidosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Pedidos $id, Request $request)
     {
         //
-
+        dd($id);
         $producto = Producto::orderBy('nombre', 'asc')->get();
         return view('pedidos.insert', compact('producto'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -80,12 +82,10 @@ class pedidosController extends Controller
      */
     public function show($id)
     {
-        $pedidos = Pedidos::join('productos', 'pedidos.productos_id', 'productos.id')
-                                ->select('pedidos.id', 'pedidos.nombreCliente', 'pedidos.apellido', 'pedidos.telefono', 'pedidos.direccion', 'pedidos.cantidad', 'productos.nombre as producto')
-                                ->where('pedidos.id', $id)
-                                ->first();
+        $pedidos = Pedidos::findOrFail($id);
 
         // $pedidos = pedidos::findOrFail($id);
+
 
         return view('pedidos.show', compact('pedidos'));
     }

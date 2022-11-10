@@ -9,9 +9,14 @@
         <button type="button" class ="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
+    <div class="mt-3">
+        <a href="{{ route('pedidos.create') }}" class="btn btn-light" id="btn">
+            Crear nuevo pedido
+        </a>
+    </div>
    
         
-    <div class="my-3 text-center">
+    <div class="my-3 text-center text-capitalize">
         <table class="table table-hover">
             <thead>
                 <tr class="my-5">

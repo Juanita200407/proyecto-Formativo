@@ -46,12 +46,14 @@ Route::get('/', [FrontController::class, 'index']);
 
 Route::get('/menu/{id}', [FrontController::class, 'welcomeByCategoria'])->name('menu.item');
 
+Route::post('/pedidos/{id}', [PedidosController::class, 'create'])->name('pedidos.create');
 
 
 Route::resource('producto', ProductoController::class)->middleware('auth');
 Route::resource('usuarios', UsuariosController::class)->middleware('auth');
 Route::resource('categoria', CategoriaController::class)->middleware('auth');
 Route::resource('pedidos', PedidosController::class)->middleware('auth');
+Route::resource('welcome', FrontController::class);
 
 
 

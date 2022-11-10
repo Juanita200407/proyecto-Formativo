@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('direccion');
             $table->foreignId('productos_id')->constrained('productos');
             $table->integer('cantidad');
+            $table->integer('precio');
             $table->timestamps();
             $table->softDeletes();
 

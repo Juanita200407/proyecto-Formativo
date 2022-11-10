@@ -25,7 +25,7 @@
             </div>
         @endcan
         
-        <div class="my-3 text-center">
+        <div class="my-3 text-center text-capitalize text-capitalize">
             @if(count($categoria) > 0)
                 <table class="table table-hover">
                     <thead>

@@ -25,10 +25,10 @@
             <a href="{{ route('login') }}" class="btn">Ingresar</a>   
         </div>
       </nav>
-    <div class="container  text-center mt-1">
+    <div class="container  text-center mt-1 text-capitalize">
             <h1 class="text-dark">Bienvenidos estimado cliente</h1>
             <div class="col-md-12 section-title text-center my-5">
-                <h3>Categoria</h3>
+                <h3>Categoría</h3>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>

@@ -3,7 +3,7 @@
 @section('titulo', 'Detalle del producto')
 
 @section('content')
-    <section class="content container-fluid mx-3">
+    <section class="content container-fluid mx-3 text-capitalize">
         <div class="row">
             <div class="col-md-5">
                 @if(isset($producto->foto))
