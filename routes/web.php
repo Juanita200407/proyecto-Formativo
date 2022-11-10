@@ -46,7 +46,10 @@ Route::get('/', [FrontController::class, 'index']);
 
 Route::get('/menu/{id}', [FrontController::class, 'welcomeByCategoria'])->name('menu.item');
 
-Route::post('/pedidos/{id}', [PedidosController::class, 'create'])->name('pedidos.create');
+// Route::get('/pedidos/{id}', [PedidosController::class, 'datos'])->name('pedidos.create');
+
+
+Route::get('/pedido/{id}', [PedidosController::class, 'create2'])->name('pedidos.create2')->middleware('auth');
 
 
 Route::resource('producto', ProductoController::class)->middleware('auth');

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\pedidos;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\producto;
+use App\Models\Producto;
 use App\Models\Categoria;
 use Auth;
 
@@ -43,12 +43,22 @@ class pedidosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Pedidos $id, Request $request)
+    public function create($id)
     {
         //
-        dd($id);
-        $producto = Producto::orderBy('nombre', 'asc')->get();
+        $productos = Producto::findOrFail($id);
+    
+        return view('pedidos.insert', compact('productos'));
+    }
+
+    public function create2($id)
+    {
+        
+        $producto = Producto::findOrFail($id);
+    
         return view('pedidos.insert', compact('producto'));
+
+
     }
 
 
@@ -82,12 +92,19 @@ class pedidosController extends Controller
      */
     public function show($id)
     {
-        $pedidos = Pedidos::findOrFail($id);
+        $pedidos = pedidos::findOrFail($id);
 
         // $pedidos = pedidos::findOrFail($id);
 
 
         return view('pedidos.show', compact('pedidos'));
+
+        // $pedidos = pedidos::join('productos', 'pedidos.productos_id', 'producto.id')
+        //                                     ->select('pedidos.id', 'pedidos.nombreClienete', 'pedidos.apellido', 'pedidos.telefono','pedidos.direccion', 'pedidos.cantidad' ,'productos.nombre as producto', 'productos.precio as precio')
+        //                                     ->where('pedidos.id', $id)
+        //                                     ->first();
+        // return view('pedidos.show', compact('pedidos'));
+        
     }
 
     /**

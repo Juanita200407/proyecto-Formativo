@@ -23,8 +23,9 @@ class FrontController extends Controller
         $categorias = Categoria::where('tipo', '=', $id)->first();
         // dd($categoria);
         $menu = Producto::where('categorias_id', '=', $categorias->id)->get();
+      
     
-       return view('menu', compact('categorias', 'menu'));
+       return view('menu', compact('categorias', 'menu', 'productos'));
     }
 
 

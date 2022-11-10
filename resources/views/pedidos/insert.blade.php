@@ -61,7 +61,12 @@
                 </div>
             </div>
             <div class="col-md-8">
+                {{-- {{ $producto->nombre }} --}}
                 <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="productos_id" name="productos_id" placeholder="productos_id" disabled>
+                        <label for="disabledTextInput" value="">{{ $producto->nombre }}</label>
+                </div>
+                {{-- <div class="form-floating mb-3">
                     <select name="productos_id" id="productos_id" class="form-select">
                         <option selected value="" disabled>Seleccione...</option>
                         @foreach ($producto as $item)
@@ -72,12 +77,11 @@
                     <div class="invalid-feedback">
                         Debe seleccionar un producto.
                     </div>
-                </div>
+                </div> --}}
             </div>
-            <fieldset disabled>
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="productos_id" name="productos_id" placeholder="productos_id" required>
-                        <label for="disabledNumberInput" value="{{ $item->id }}">{{ $item->precio }}</label>
+                    <input type="number" class="form-control" id="precio" name="precio" placeholder="precio" disabled>
+                        <label for="disabledNumberInput" value="">{{ $producto->precio }}</label>
                 </div>
             
         </div>

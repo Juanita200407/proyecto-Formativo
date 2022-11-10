@@ -23,13 +23,13 @@ class pedidos extends Model
         'productos_id'
     ];
 
-    public static function boot(){
-      parent::boot();
-      self::creating(function($obj){
-        $producto = Producto::find($obj->productos_id);
-        $obj->precio=$obj->cantidad * $producto->precio;
-      });
-    }
+    // public static function boot(){
+    //   parent::boot();
+    //   self::creating(function($obj){
+    //     $producto = Producto::find($obj->productos_id);
+    //     $obj->precio=$obj->cantidad * $producto->precio;
+    //   });
+    // }
 
 }
 

@@ -29,6 +29,10 @@
                             <strong>Producto:</strong>
                             {{ $pedidos->producto }}
                         </div>
+                        <div class="form-group">
+                            <strong>Precio:</strong>
+                            {{ $pedidos->precio }}
+                        </div>
                     </div>
                     <div class="float-right p-2">
                         <a class="btn btn-outline " id="btn" href="{{ route('pedidos.index') }}"><i class="fa-solid fa-arrow-left"></i>Regresar</a>

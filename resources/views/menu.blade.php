@@ -32,7 +32,7 @@
                             {{ $item->precio }}
                         </div>
                         <div class="d-card-button compra">
-                            <a href="{{ route('pedidos.create', $item->id) }}" class="btn btn-outline-dark"><i class="fa-solid fa-cart-shopping"></i>comprar</a>
+                            <a href="{{ route('pedidos.create2', $item->id) }}" class="btn btn-outline-dark"><i class="fa-solid fa-cart-shopping"></i>comprar</a>
                             <a href="{{ route('welcome.index') }}" class="btn btn-outline-dark">regresar</a>
                         </div>
                     </div>
