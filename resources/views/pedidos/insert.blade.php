@@ -63,26 +63,14 @@
             <div class="col-md-8">
                 {{-- {{ $producto->nombre }} --}}
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" disabled>
-                        <label for="disabledTextInput" value="{{ $producto->nombre }}">{{ $producto->nombre }}</label>
+                    <input type="text" class="form-control" id="productos_id" name="productos_id" value="{{ auth()->user()->nombre  }}" disabled>
+                    <label for="disabledNumberInput">producto</label>
                 </div>
-                {{-- <div class="form-floating mb-3">
-                    <select name="productos_id" id="productos_id" class="form-select">
-                        <option selected value="" disabled>Seleccione...</option>
-                        @foreach ($producto as $item)
-                            <option value="{{ $item->id }}">{{ $item->nombre }}</option>
-                        @endforeach
-                    </select>
-                    <label for="productos_id">Producto</label>
-                    <div class="invalid-feedback">
-                        Debe seleccionar un producto.
-                    </div>
-                </div> --}}
             </div>
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="precio" name="precio" placeholder="precio" disabled>
-                        <label for="disabledNumberInput" value="{{ $producto->precio }}">{{ $producto->precio }}</label>
-                </div>
+            <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="productos_id" name="productos_id" value="{{ $producto->precio }}" disabled>
+                    <label for="disabledNumberInput">Precio</label>
+            </div>
             
         </div>
         <div class="mb-3">

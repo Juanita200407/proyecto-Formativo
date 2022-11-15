@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('direccion');
             $table->integer('cantidad');
+            $table->foreignId('productos_id')->constrained('productos');
             $table->timestamps();
             $table->softDeletes();
 
@@ -35,6 +36,9 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('pedidos');
+        Schema::table('pedidos', function (Blueprint $table) {
+            $table->dropForeign('pedidos_productos_id_foreign');
+        });
         Schema::table('pedidos', function (Blueprint $table) {
             $table->dropForeign('pedidos_user_id_foreign');
         });

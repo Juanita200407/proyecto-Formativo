@@ -8,7 +8,6 @@
             <div class="col-md-7">
                 <div class="card">
                     <div class="card-body">
-                        
                         <div class="form-group">
                             <strong>Nombre:</strong>
                             {{ $pedidos->nombreCliente }}
@@ -27,12 +26,13 @@
                         </div>
                         <div class="form-group">
                             <strong>Producto:</strong>
-                            {{ $producto->nombre }}
+                            {{ $pedidos->nombre }}
                         </div>
                         <div class="form-group">
                             <strong>Precio:</strong>
-                            {{ $producto->precio }}
+                            {{ $pedidos->precio }}
                         </div>
+                      
                     </div>
                     <div class="float-right p-2">
                         <a class="btn btn-outline " id="btn" href="{{ route('pedidos.index') }}"><i class="fa-solid fa-arrow-left"></i>Regresar</a>

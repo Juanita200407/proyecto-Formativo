@@ -55,7 +55,6 @@ class pedidosController extends Controller
     {
         
         $producto = Producto::findOrFail($id);
-    
         return view('pedidos.insert', compact('producto'));
 
 
@@ -94,19 +93,14 @@ class pedidosController extends Controller
     {
         $producto = Producto::findOrFail($id);
         $pedido = Pedidos::findOrFail($id);
-        $pedidos = Pedidos::where('user_id', $pedido)->get();
+        $pedidos = Pedidos::join('productos', 'pedidos.productos_id', 'productos.id')
+                                        ->select('pedidos.id', 'pedidos.nombreCliente', 'pedidos.apellido', 'pedidos.telefono','pedidos.direccion', 'pedidos.cantidad', 'productos.nombre as productos', 'productos.precio as precio')
+                                        ->where('pedidos.id', $id)
+                                        ->first();
         return view('pedidos.show', compact('producto', 'pedido', 'pedidos'));
         
     }
 
-    
-    public function show2($id)
-    {
-        $pedidos = Pedidos::findOrFail($id);
-        $productos = Producto::findOrFail($id);
-        return view('pedidos.show', compact('pedidos', 'productos'));
-        
-    }
 
 
 
