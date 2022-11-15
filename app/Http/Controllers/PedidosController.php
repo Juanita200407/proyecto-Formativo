@@ -92,20 +92,24 @@ class pedidosController extends Controller
      */
     public function show($id)
     {
-        $pedidos = pedidos::findOrFail($id);
-
-        // $pedidos = pedidos::findOrFail($id);
-
-
-        return view('pedidos.show', compact('pedidos'));
-
-        // $pedidos = pedidos::join('productos', 'pedidos.productos_id', 'producto.id')
-        //                                     ->select('pedidos.id', 'pedidos.nombreClienete', 'pedidos.apellido', 'pedidos.telefono','pedidos.direccion', 'pedidos.cantidad' ,'productos.nombre as producto', 'productos.precio as precio')
-        //                                     ->where('pedidos.id', $id)
-        //                                     ->first();
-        // return view('pedidos.show', compact('pedidos'));
+        $producto = Producto::findOrFail($id);
+        $pedido = Pedidos::findOrFail($id);
+        $pedidos = Pedidos::where('user_id', $pedido)->get();
+        return view('pedidos.show', compact('producto', 'pedido', 'pedidos'));
         
     }
+
+    
+    public function show2($id)
+    {
+        $pedidos = Pedidos::findOrFail($id);
+        $productos = Producto::findOrFail($id);
+        return view('pedidos.show', compact('pedidos', 'productos'));
+        
+    }
+
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -117,8 +121,17 @@ class pedidosController extends Controller
     {
         // $cantidad = $request->cantidad;
         $pedido = Pedidos::findOrFail($id);
-        $producto = Producto::orderBy('nombre', 'asc')->get();
+        $producto = Producto::findOrFail($id);
         return view('pedidos.edit', compact('pedido', 'producto'));
+        
+    }
+
+    public function edit2($id)
+    {
+        // $cantidad = $request->cantidad;
+        $pedidos = Pedidos::findOrFail($id);
+        $productos = Producto::findOrFail($id);
+        return view('pedidos.edit', compact('pedidos', 'productos'));
         
     }
 

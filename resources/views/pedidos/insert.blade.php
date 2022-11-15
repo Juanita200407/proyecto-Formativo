@@ -63,8 +63,8 @@
             <div class="col-md-8">
                 {{-- {{ $producto->nombre }} --}}
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="productos_id" name="productos_id" placeholder="productos_id" disabled>
-                        <label for="disabledTextInput" value="">{{ $producto->nombre }}</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" disabled>
+                        <label for="disabledTextInput" value="{{ $producto->nombre }}">{{ $producto->nombre }}</label>
                 </div>
                 {{-- <div class="form-floating mb-3">
                     <select name="productos_id" id="productos_id" class="form-select">
@@ -81,7 +81,7 @@
             </div>
                 <div class="form-floating mb-3">
                     <input type="number" class="form-control" id="precio" name="precio" placeholder="precio" disabled>
-                        <label for="disabledNumberInput" value="">{{ $producto->precio }}</label>
+                        <label for="disabledNumberInput" value="{{ $producto->precio }}">{{ $producto->precio }}</label>
                 </div>
             
         </div>

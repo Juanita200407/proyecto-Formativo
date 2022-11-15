@@ -27,11 +27,11 @@
                         </div>
                         <div class="form-group">
                             <strong>Producto:</strong>
-                            {{ $pedidos->producto }}
+                            {{ $producto->nombre }}
                         </div>
                         <div class="form-group">
                             <strong>Precio:</strong>
-                            {{ $pedidos->precio }}
+                            {{ $producto->precio }}
                         </div>
                     </div>
                     <div class="float-right p-2">
