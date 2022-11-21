@@ -4,10 +4,14 @@
 @section('titulo', 'Registra tu pedido')
 
 @section('content')
-    <form action="{{ route('pedidos.store') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
-        @csrf 
+        <form action="{{ route('pedidos.store') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+            @csrf
         <div class="form-floating mb-3">
             <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ auth()->user()->id }}" required>
+            <label for="nombreCliente">id user</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="hidden" class="form-control" id="producto_id" name="producto_id" value="{{ $producto->id }}" required>
             <label for="nombreCliente">id user</label>
         </div>
         <div class="row">
@@ -51,41 +55,106 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="cantidad" required>
-                    <label for="cantidad">Cantidad</label>
-                    <div class="invalid-feedback">
-                        Debe ingresar la dirección.
+            @auth
+                <div class="col-md-4">
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="cantidad" min="1" max="99" required>
+                        <label for="cantidad">Cantidad</label>
+                        <div class="invalid-feedback">
+                            Debe ingresar la dirección.
+                        </div>
+                        <input type="hidden" name="precioA" id="precioA">
+
                     </div>
                 </div>
-            </div>
+                
+            @endauth
             <div class="col-md-8">
                 {{-- {{ $producto->nombre }} --}}
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="productos_id" name="productos_id" value="{{ auth()->user()->nombre  }}" disabled>
-                    <label for="disabledNumberInput">producto</label>
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="producto_id" name="producto_id" placeholder="producto_id" value="{{ $producto->nombre }}" disabled>
+                    <label for="producto_id">producto</label>
                 </div>
             </div>
+            {{-- <div class="row">
+                <div class="col-md-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Sin cebolla
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                      <label class="form-check-label" for="flexCheckChecked">
+                        Sin lechuga
+                      </label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                      <label class="form-check-label" for="flexCheckChecked">
+                        Sin tomate
+                      </label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                      <label class="form-check-label" for="flexCheckChecked">
+                        Sin papas
+                      </label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                      <label class="form-check-label" for="flexCheckChecked">
+                        Sin yuca
+                      </label>
+                    </div>
+                </div>
+            </div> --}}
+
             <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="productos_id" name="productos_id" value="{{ $producto->precio }}" disabled>
-                    <label for="disabledNumberInput">Precio</label>
+                <input type="text" class="form-control" id="precio" name="precio" placeholder="precio" value="{{ $producto->precio }}" disabled>
+                <label for="precio" class="mx-2">Precio</label>
             </div>
+
+            <input type="hidden" name="precioT" readonly id="precioT">
+
             
         </div>
         <div class="mb-3">
-            <button type="submit" class="btn btn-outline-secondary"><i class="fa-regular fa-floppy-disk mx-2  justify-content-center"></i>Guardar</button>
+            <button type="submit" id="calcular" class="btn btn-outline-secondary"><i class="fa-regular fa-floppy-disk mx-2  justify-content-center"></i>Guardar</button>
+
             <a class="btn btn-outline-danger" href="{{ route('pedidos.index') }}">Cancelar</a>
         </div>
+
     </form>
 @endsection
 
 
 @section('scripts')
     <script>
+    </script>
+    <script>
+        var p1 = document.getElementById("precio");
+        var p2 = document.getElementById("cantidad");
+        var boton_de_calcular= document.getElementById("calcular");
+        boton_de_calcular.addEventListener("click", res);
+    
+        function res(){
+            var multi = p1.value * p2.value;
+            document.getElementById("precioA").value = multi;
+            document.getElementById("precioT").value = multi;
+        }
         (() => {
-        'use strict'
-
+            'use strict'
+            
             // Fetch all the forms we want to apply custom Bootstrap validation styles to
             const forms = document.querySelectorAll('.needs-validation')
 
@@ -103,4 +172,7 @@
     })()
 
     </script>
+
 @endsection
+
+

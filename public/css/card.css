@@ -62,4 +62,9 @@
     {
         width: 30%;
     }
+
+    .swiper-wrapper
+    {
+        width: 200%;
+    }
  }

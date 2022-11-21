@@ -40,26 +40,37 @@
                 <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="cantidad" value="{{ $pedido->cantidad }}" required>
                 <label for="cantidad">Cantidad</label>
             </div>
+            <input type="hideen" name="precioA" id="precioA">
         </div>
         <div class="col-md-6">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="productos_id" name="productos_id" placeholder="productos_id" disabled>
-                    <label for="disabledTextInput" value="">{{ auth()->user()->name }}</label>
+                <input type="text" class="form-control" id="producto_id" name="producto_id" placeholder="producto_id" disabled>
+                    <label for="producto" value="">{{ $pedido->productos }}</label>
             </div>
         </div> 
     </div>
  
     <div class="form-floating mb-3">
         <input type="number" class="form-control" id="precio" name="precio" placeholder="precio" disabled>
-            <label for="disabledNumberInput" value="">{{ $producto->precio }}</label>
+            <label for="precio" value="">{{ $pedido->precio }}</label>
     </div>
-    
     <button type="submit" class="btn btn-outline-secondary">Guardar</button>
+    <button id="calcular" class="btn btn-outline-secondary"><i class="fa-regular fa-floppy-disk mx-2  justify-content-center"></i>Calcular</button>
+
 </form>
 
 @endsection
 @section('scripts')
     <script>
+        var p1 = document.getElementById("precio");
+        var p2 = document.getElementById("cantidad");
+        var boton_de_calcular= document.getElementById("calcular");
+        boton_de_calcular.addEventListener("click", res);
+    
+        function res(){
+            var multi = p1.value * p2.value;
+            document.getElementById("precioA").value = multi;
+        }
         (() => {
         'use strict'
 

@@ -60,6 +60,9 @@
 
 
                 </ul>
+                {{-- <a class="nav-link dropdown-toggle" href="{{ route('carrito.index') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    carrito
+                </a> --}}
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Buscar..." name="buscar" aria-label="Buscar">
                     <button class="btn btn-outline-dark" type="submit">Buscar</button>

@@ -47,7 +47,6 @@ class pedidosController extends Controller
     {
         //
         $productos = Producto::findOrFail($id);
-    
         return view('pedidos.insert', compact('productos'));
     }
 
@@ -69,15 +68,20 @@ class pedidosController extends Controller
      */
     public function store(Request $request)
     {
-        $user_id = $request->user_id;
-        $nombreCliente = $request->nombreCliente;
-        $apellido = $request->apellido;
-        $telefono = $request->telefono;
-        $direccion = $request->direccion;
-        $productos_id = $request->productos_id;
+        // $user_id = $request->user_id;
+        // $nombreCliente = $request->nombreCliente;
+        // $apellido = $request->apellido;
+        // $telefono = $request->telefono;
+        // $direccion = $request->direccion;
+        // $producto = $request->producto;
+        // $precio = $request->precio;
+        // $precioT = $request->precioT;
 
+        // Pedidos::create($request->all());
 
-        Pedidos::create($request->all());
+        $pedidos = $request->except('_token');
+        
+        Pedidos::insert($pedidos);
 
         return redirect()->route('pedidos.index')->with('exito','¡El registro se ha creado satisfactoriamente!');
 
@@ -91,15 +95,27 @@ class pedidosController extends Controller
      */
     public function show($id)
     {
-        $producto = Producto::findOrFail($id);
-        $pedido = Pedidos::findOrFail($id);
-        $pedidos = Pedidos::join('productos', 'pedidos.productos_id', 'productos.id')
+        $productos = Producto::findOrFail($id);
+        // $pedido = Pedidos::findOrFail($id);
+        $pedidos = Pedidos::join('productos', 'pedidos.producto_id', 'productos.id')
                                         ->select('pedidos.id', 'pedidos.nombreCliente', 'pedidos.apellido', 'pedidos.telefono','pedidos.direccion', 'pedidos.cantidad', 'productos.nombre as productos', 'productos.precio as precio')
                                         ->where('pedidos.id', $id)
                                         ->first();
-        return view('pedidos.show', compact('producto', 'pedido', 'pedidos'));
+        return view('pedidos.show', compact('productos', 'pedidos'));
         
     }
+
+    public function show2($id)
+    {
+        // $producto = Producto::findOrFail($id);
+        // $pedido = Pedidos::findOrFail($id);
+        $pedido = Pedidos::join('productos', 'pedidos.producto_id', 'productos.id')
+                                        ->select('pedidos.id', 'pedidos.nombreCliente', 'pedidos.apellido', 'pedidos.telefono','pedidos.direccion', 'pedidos.cantidad', 'productos.nombre as productos', 'productos.precio as precio', 'pedidos.precioA', 'pedidos.precioT')
+                                        ->where('pedidos.id', $id)
+                                        ->first();
+        return view('pedidos.show', compact('pedido'));
+    }
+
 
 
 
@@ -114,9 +130,11 @@ class pedidosController extends Controller
     public function edit($id)
     {
         // $cantidad = $request->cantidad;
-        $pedido = Pedidos::findOrFail($id);
-        $producto = Producto::findOrFail($id);
-        return view('pedidos.edit', compact('pedido', 'producto'));
+        $pedido = Pedidos::join('productos', 'pedidos.producto_id', 'productos.id')
+                                        ->select('pedidos.id', 'pedidos.nombreCliente', 'pedidos.apellido', 'pedidos.telefono','pedidos.direccion', 'pedidos.cantidad', 'productos.nombre as productos', 'productos.precio as precio', 'pedidos.precioA')
+                                        ->where('pedidos.id', $id)
+                                        ->first();
+        return view('pedidos.edit', compact('pedido'));
         
     }
 
@@ -138,8 +156,10 @@ class pedidosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pedidos = Pedidos::findOrFail($id);
-        $pedidos->update($request->all());
+        $pedido = Pedidos::findOrFail($id);
+        $actualizarProducto = $request->except('_token');
+        $pedido->where('id', $id)->update($actualizarProducto);
+        
         return redirect()->route('pedidos.index')->with('exito','¡El pedidos se ha actualizado satisfactoriamente!');
     }
 

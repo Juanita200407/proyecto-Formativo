@@ -21,7 +21,9 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('direccion');
             $table->integer('cantidad');
-            $table->foreignId('productos_id')->constrained('productos');
+            $table->foreignId('producto_id')->constrained('productos');
+            $table->integer('precioA')->nullable();
+            $table->integer('precioT')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
@@ -37,10 +39,11 @@ return new class extends Migration
     {
         Schema::dropIfExists('pedidos');
         Schema::table('pedidos', function (Blueprint $table) {
-            $table->dropForeign('pedidos_productos_id_foreign');
-        });
-        Schema::table('pedidos', function (Blueprint $table) {
             $table->dropForeign('pedidos_user_id_foreign');
+        });
+
+        Schema::table('pedidos', function (Blueprint $table) {
+            $table->dropForeign('pedidos_producto_id_foreign');
         });
     }
 };

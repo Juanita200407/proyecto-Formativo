@@ -10,8 +10,8 @@
     </div>
     @endif
     <div class="mt-3">
-        <a href="{{ route('pedidos.create2') }}" class="btn btn-light" id="btn">
-            Crear nuevo pedido
+        <a href="{{ route('welcome.index') }}" class="btn btn-light" id="btn"><i class="fa-solid fa-arrow-left fa-beat-fade" style="--fa-beat-fade-opacity: 0.1; --fa-beat-fade-scale: 1.25;"></i>
+            Regresar al inicio
         </a>
     </div>
    
@@ -21,22 +21,24 @@
             <thead>
                 <tr class="my-5">
                     <th>Nombre</th>
-                    <th>Apellido</th>
                     <th>Telefono</th>
+                    <th>Producto</th>
                     <th>Direccion</th>
+                    <th>precio</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
             @foreach($pedidoUsuario as $item)
                 <tr>
-                    <td>{{ $item->nombreCliente }}</td>
-                    <td>{{ $item->apellido }}</td>
+                    <td>{{ $item->nombreCliente }} {{ $item->apellido }}</td>
                     <td>{{ $item->telefono }}</td>
+                    <td>{{ $item->nombre }}</td>
                     <td>{{ $item->direccion }}</td>
+                    <td>{{ $item->precioA }}</td>
                     
                     <td class="d-flex">
-                        <a href="{{ route('pedidos.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
+                        <a href="{{ route('pedidos.show2', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
                             <a href="{{ route('pedidos.edit', $item->id) }}" class="btn btn-outline-warning justify-content-start me-1 rounded-circle"><i class="fa-solid fa-pen-to-square"></i></a>
                             <form action="{{ route('pedidos.destroy', $item->id) }}" method="post" class="justify-content-start form-delete">
                                 @csrf
@@ -47,16 +49,43 @@
                             </form>
                     </td>
                 </tr>
+                <input type="hidden" name="suma" class="suma"  id="suma" value="{{ $item->precioA }}">
             @endforeach
             </tbody>
+            <tr>
+                <th>Precio Total a pagar: </th>
+                <td><input type="number" name="precioT" class="form-controller-plaintext"  id="precioT" disabled></td>
+                
+            </tr>
         </table>
     </div>
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{  asset('js/jquery.min.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+
+        var m1 = document.getElementsByClassName("suma");
+        console.log(m1)
+
+        var precioTT = 0;
+
+        for(var i = 0; i < m1.length; i++){
+
+            var precio = m1[i].value
+
+           
+
+            var total = parseInt(m1[i].value, 0);
+          
+            precioTT = precioTT + total;
+
+            console.log(precioTT)
+
+    }
+
+    document.getElementById("precioT").value = precioTT;
         //Captura del evento submit del formulario para eliminar
         $('.form-delete').submit(function(e){
             // Para el lanzamiento del evento

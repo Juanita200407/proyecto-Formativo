@@ -19,8 +19,11 @@ class pedidos extends Model
         'telefono',
         'direccion',
         'cantidad',
+        'producto_id',
         'precio',
-        'productos_id'
+        'precioA',
+        'precioT',
+
     ];
 
     // public static function boot(){

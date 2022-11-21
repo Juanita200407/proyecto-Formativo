@@ -105,8 +105,8 @@ h1{
         top: -100px;
     }
 
-    .fondo{
-        width: 100%;
+    .row{
+        width: 200%;
     }
 
     .navbar{
@@ -118,4 +118,3 @@ h1{
     }
    
  }
-

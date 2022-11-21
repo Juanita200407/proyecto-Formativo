@@ -24,7 +24,7 @@
           <a class="navbar-brand" href="#">
             <a href="{{ route('login') }}" class="btn">Ingresar</a>   
         </div>
-      </nav>
+    </nav>
     <div class="container  text-center mt-1 text-capitalize">
             <h1 class="text-dark">Bienvenidos estimado cliente</h1>
             <div class="col-md-12 section-title text-center my-5">
@@ -40,7 +40,7 @@
                                 <img src="{{ asset('storage'). '/'. $item->foto }}"
                                     alt="">
                                 <div class="card-description">
-                                    <div class="card-title">
+                                    <div class="card-title text-center">
                                         <h4>{{ $item->tipo }}</h4>
                                     </div>
                                     <div class="card-link">

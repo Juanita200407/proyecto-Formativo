@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\RegisteredUserController2;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,11 @@ Route::middleware('guest')->group(function () {
                 ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::post('registers', [RegisteredUserController::class, 'store2']);
+
+
+    // Route::post('register/{id}', [RegisteredUserController2::class, 'store2'])->name('pedidos.insert');
+
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
