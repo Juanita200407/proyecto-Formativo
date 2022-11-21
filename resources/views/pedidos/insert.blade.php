@@ -76,48 +76,7 @@
                     <label for="producto_id">producto</label>
                 </div>
             </div>
-            {{-- <div class="row">
-                <div class="col-md-2">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Sin cebolla
-                        </label>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                      <label class="form-check-label" for="flexCheckChecked">
-                        Sin lechuga
-                      </label>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                      <label class="form-check-label" for="flexCheckChecked">
-                        Sin tomate
-                      </label>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                      <label class="form-check-label" for="flexCheckChecked">
-                        Sin papas
-                      </label>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                      <label class="form-check-label" for="flexCheckChecked">
-                        Sin yuca
-                      </label>
-                    </div>
-                </div>
-            </div> --}}
+    
 
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="precio" name="precio" placeholder="precio" value="{{ $producto->precio }}" disabled>
