@@ -20,7 +20,7 @@
                             {{ $producto->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Descrpcion:</strong>
+                            <strong>Descripcion:</strong>
                             {{ $producto->descripcion }}
                         </div>
                         <div class="form-group">

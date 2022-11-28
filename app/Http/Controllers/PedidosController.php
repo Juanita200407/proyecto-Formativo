@@ -54,6 +54,7 @@ class pedidosController extends Controller
     {
         
         $producto = Producto::findOrFail($id);
+        dd($producto);
         return view('pedidos.insert', compact('producto'));
 
 

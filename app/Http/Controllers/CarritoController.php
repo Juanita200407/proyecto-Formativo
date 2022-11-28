@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carrito;
-use App\Models\User;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Gate;
+use Auth;
 
 class CarritoController extends Controller
 {
@@ -14,18 +16,43 @@ class CarritoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Carrito $id)
+    public function index(Producto $id)
     {
+
         $user = User::all();
         $name = auth()->user()->name;
         $usuarioId = auth()->user()->id;
         $email = auth()->user()->email;
 
-        $producto = Producto::all();
+        $producto = Carrito::findOrFail($id);
 
-        $carrito = Carrito::where('user_id', $usuarioId)->get();
+        $dd = auth()->user()->id;
 
-        return view('carritos.index', compact('user', 'name', 'usuarioId', 'email', 'producto', 'carrito'));
+        if(Auth::user()->hasRol("Administrador")){
+            
+            $pedidoUsuario = Carrito::all();
+            return view('carritos.index', compact('pedidoUsuario'));  
+
+            
+        }
+         
+        $producto = Carrito::findOrFail($id);
+        $pedidoUsuario = Carrito::where('user_id', $usuarioId)->get();
+    
+
+        return view('carritos.index', compact('user', 'name', 'usuarioId', 'email', 'producto', 'pedidoUsuario'));
+
+
+        // $user = User::all();
+        // $name = auth()->user()->name;
+        // $usuarioId = auth()->user()->id;
+        // $email = auth()->user()->email;
+
+        // $producto = Producto::findOrFail($id);
+
+        // $carrito = Carrito::where('user_id', $usuarioId)->get();
+
+        // return view('carritos.index', compact('user', 'name', 'usuarioId', 'email', 'producto', 'carrito'));
     }
 
     /**
@@ -46,12 +73,19 @@ class CarritoController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $datosDelProducto = $request->except('_token');
-        Carrito::insert($datosDelProducto);
-        return redirect()->route('carritos.index')->with('exito','¡El  se ha actualizado satisfactoriamente!');
-        
 
+        $usuario = User::all();
+
+        $userId = auth()->user()->id;
+        $name = auth()->user()->name;
+
+        $datosProducto = $request->except('_token');
+
+     
+        Carrito::insert($datosProducto);
+
+        return redirect()->route('carritos.index' ,compact("userId"))->with('exito', 'Producto se ha registrado satisfatoriamente.');
+        //
     }
 
     /**
@@ -60,9 +94,13 @@ class CarritoController extends Controller
      * @param  \App\Models\Carrito  $carrito
      * @return \Illuminate\Http\Response
      */
-    public function show(Carrito $carrito)
+    public function show($id)
     {
-        //
+        $carrito = Carrito::join('productos', 'carritos.producto_id', 'productos.id')
+                                        ->select('carritos.id', 'productos.nombre', 'productos.descripcion', 'productos.tamaño', 'carritos.precioT', 'carritos.cantidad', 'productos.foto')
+                                        ->where('carritos.id', $id)
+                                        ->first();
+        return view('carritos.show', compact('carrito'));
     }
 
     /**
@@ -94,8 +132,10 @@ class CarritoController extends Controller
      * @param  \App\Models\Carrito  $carrito
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Carrito $carrito)
+    public function destroy($id)
     {
-        //
+        $carrito = Carrito::findOrFail($id);
+        $carrito->delete();
+        return redirect()->route('carritos.index');
     }
 }

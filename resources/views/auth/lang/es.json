@@ -1,9 +1,10 @@
 {
     "E-Mail Address": "Correo electrónico",
     "Password": "Contraseña",
-    "Remember Me": "Recuérdame",
+    "Remember me": "Recuérdame",
     "Login": "Acceder",
-    "Forgot Your Password?": "¿Olvidaste tu contraseña?",
+    "Forgot your password?": "¿Olvidaste tu contraseña?",
+    "Already registered?":"¿Ya estás registrado?",
     "Register": "Registro",
     "Name": "Nombre",
     "Confirm Password": "Confirmar contraseña",

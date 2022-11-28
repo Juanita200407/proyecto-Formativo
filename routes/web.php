@@ -6,6 +6,7 @@ use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\PedidosController;
+use App\Http\Controllers\ComprasController;
 use App\Http\Controllers\CarritoController;
 
 
@@ -55,20 +56,25 @@ Route::get('/menu/{id}', [FrontController::class, 'welcomeByCategoria'])->name('
 
 Route::get('/pedidos/{id}', [PedidosController::class, 'create2'])->name('pedidos.create2')->middleware('auth');
 
+Route::get('/pedido/{id}', [PedidoController::class, 'create'])->name('pedido.create')->middleware('auth');
 
 Route::get('/pedido/{id}', [PedidosController::class, 'show2'])->name('pedidos.show2');
 
+
+
 Route::post('/pedido/{id}', [PedidosController::class, 'edit2'])->name('pedidos.edit2');
 
+Route::get('/carrito/procesarPedido', 'CarritoController@procesoPedido')->name('carrito.procesoPedido');
 
 Route::resource('producto', ProductoController::class)->middleware('auth');
 Route::resource('usuarios', UsuariosController::class)->middleware('auth');
 Route::resource('categoria', CategoriaController::class)->middleware('auth');
 Route::resource('pedidos', PedidosController::class)->middleware('auth');
-Route::resource('carrito', CarritoController::class)->middleware('auth');
+Route::resource('comprar', ComprasController::class)->middleware('auth');
+Route::resource('carritos', CarritoController::class)->middleware('auth');
 
 
-Route::resource('welcome', FrontController::class);
+Route::resource('welcome', FrontController::class)->middleware('auth');
 
 
 

@@ -17,6 +17,12 @@
             <button type="button" class ="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
+        @if($mensaje = Session::get('error'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <p>{{ $mensaje }}</p>
+            <button type="button" class ="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
         @can(['administrador'])
             <div class="mt-3">
                 <a href="{{ route('categoria.create') }}" class="btn btn-light" id="btn">
@@ -72,8 +78,8 @@
                 e.preventDefault();
                 //Lanzar alerta de sweetAlert
                 Swal.fire({
-                    title: '¿Está seguro de eliminar el producto?',
-                    text: "¡Esta acción no se podrá deshacer!",
+                    title: '¿Está seguro de eliminar esta categoria?',
+                    text: "¡Pero primero debera de eliminar todos los productos de esta categoría!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',

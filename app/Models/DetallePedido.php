@@ -3,13 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Producto;
 
-
-
-class pedidos extends Model
+class DetallePedido extends Model
 {
     use SoftDeletes;
     protected $fillable = [
@@ -20,20 +16,11 @@ class pedidos extends Model
         'direccion',
         'cantidad',
         'producto_id',
+        'pedidos_id',
         'nombreProducto',
         'precio',
         'precioA',
         'precioT',
 
     ];
-
-    // public static function boot(){
-    //   parent::boot();
-    //   self::creating(function($obj){
-    //     $producto = Producto::find($obj->productos_id);
-    //     $obj->precio=$obj->cantidad * $producto->precio;
-    //   });
-    // }
-
 }
-

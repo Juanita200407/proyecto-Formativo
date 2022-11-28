@@ -43,7 +43,7 @@
                 <td>{{ $item->descripcion }}</td>
                 <td>{{ $item->tamaño }}</td>
                 <td>{{ $item->cantidad }}</td>
-                <td>{{ $item->precio }}</td>
+                <td>${{ number_format($item->precio) }}</td>
 
                 <td class="d-flex ">
                     <a href="{{ route('producto.show', $item->id) }}" class="btn btn-outline-info justify-content-start me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>

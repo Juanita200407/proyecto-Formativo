@@ -13,20 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pedidos', function (Blueprint $table) {
+        Schema::create('comprars', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('nombreCliente');
             $table->string('apellido');
             $table->string('telefono');
             $table->string('direccion');
-            $table->integer('cantidad');
-            $table->foreignId('producto_id')->constrained('productos');
+            $table->integer('cantidad')->nullable();
+            $table->integer('cantidadA')->nullable();
+            $table->integer('cantidadT')->nullable();
             $table->integer('precioA')->nullable();
             $table->integer('precioT')->nullable();
+            // $table->string('nombreProducto');
+            $table->foreignId('carrito_id')->constrained('carritos');
             $table->timestamps();
-            $table->softDeletes();
-
         });
     }
 
@@ -37,13 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedidos');
-        Schema::table('pedidos', function (Blueprint $table) {
-            $table->dropForeign('pedidos_user_id_foreign');
-        });
-
-        Schema::table('pedidos', function (Blueprint $table) {
-            $table->dropForeign('pedidos_producto_id_foreign');
-        });
+        Schema::dropIfExists('comprars');
     }
 };

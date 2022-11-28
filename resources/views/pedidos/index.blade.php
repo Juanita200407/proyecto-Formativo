@@ -33,7 +33,7 @@
                 <tr>
                     <td>{{ $item->nombreCliente }} {{ $item->apellido }}</td>
                     <td>{{ $item->telefono }}</td>
-                    <td>{{ $item->nombre }}</td>
+                    <td>{{ $item->nombreProducto }}</td>
                     <td>{{ $item->direccion }}</td>
                     <td>{{ $item->precioA }}</td>
                     
@@ -54,7 +54,7 @@
             </tbody>
             <tr>
                 <th>Precio Total a pagar: </th>
-                <td><input type="number" name="precioT" class="form-controller-plaintext"  id="precioT" disabled></td>
+                <td><input  type="number" name="precioT" class="form-controller-plaintext"  id="precioT"  disabled></td>
                 
             </tr>
         </table>

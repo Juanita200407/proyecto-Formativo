@@ -4,6 +4,8 @@ h1{
     font-size: 300%;
 }
 
+
+
 .main-container{
     max-width: 50rem !important;
 }
@@ -54,11 +56,11 @@ body::after{
 
 .navbar-brand{
     color:black;
-
 }
 
+
 .img-miniatura{
-    max-width: 350px;
+    max-width: auto;
     border-radius: 15%;
     border-style: solid;
     border-color: #fff;

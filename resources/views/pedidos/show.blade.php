@@ -10,32 +10,32 @@
                     <div class="card-body">
                         <div class="form-group">
                             <strong>Nombre:</strong>
-                            {{ $pedidos->nombreCliente }} {{ $pedidos->apellido }}
+                            {{ $pedido->nombreCliente }} {{ $pedido->apellido }}
                         </div>
                         <div class="form-group">
                             <strong>Telefono:</strong>
-                            {{ $pedidos->telefono }}
+                            {{ $pedido->telefono }}
                         </div>
                         <div class="form-group">
                             <strong>Direccion:</strong>
-                            {{ $pedidos->direccion }}
+                            {{ $pedido->direccion }}
                         </div>
                         <div class="form-group">
                             <strong>Cantidad:</strong>
-                            {{ $pedidos->cantidad }}
+                            {{ $pedido->cantidad }}
                         </div>
                         <div class="form-group">
                             <strong>Producto:</strong>
-                            {{ $pedidos->productos }}
+                            {{ $pedido->productos }}
                         </div>
                         <div class="form-group">
                             <strong>El total a pagar:</strong>
-                            {{ $pedidos->precioA }}
+                            {{ $pedido->precioA }}
                         </div>
                       
                     </div>
                     <div class="float-right p-2">
-                        <a class="btn btn-outline " id="btn" href="{{ route('pedidos.index') }}"><i class="fa-solid fa-arrow-left"></i>Regresar</a>
+                        <a class="btn btn-outline " id="btn" href="{{ route('pedidos.index') }}"><i class="fa-solid fa-arrow-left fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i>Regresar</a>
                     </div>
                 </div>
                 

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/producto.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <title>@yield('titulo')</title>
 </head>
@@ -43,15 +44,9 @@
                         </ul>
                     </li>
                     @endcan
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Pedidos
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('pedidos.index')}}">listar</a></li>
-                            <li><a class="dropdown-item" href="#">crear menu</a></li>
-                        </ul>
-                    </li>
+                    <a class="navbar-brand" href="{{ route('carritos.index')}}">
+                        <img src="{{ asset('images/carrito.png') }}" alt="Bootstrap" width="30" height="24">
+                    </a>
                     @can(['administrador'])
                     <li class="nav-item">
                         <a href="{{ route('usuarios.index') }}" class="nav-link">Usuarios</a>

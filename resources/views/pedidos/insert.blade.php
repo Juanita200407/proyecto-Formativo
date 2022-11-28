@@ -14,6 +14,11 @@
             <input type="hidden" class="form-control" id="producto_id" name="producto_id" value="{{ $producto->id }}" required>
             <label for="nombreCliente">id user</label>
         </div>
+
+        <div class="form-floating mb-3">
+            <input type="hidden" class="form-control" id="nombreProducto" name="nombreProducto" value="{{ $producto->nombre }}" required>
+            <label for="nombreProducto">id user</label>
+        </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-floating mb-3">
@@ -72,8 +77,8 @@
             <div class="col-md-8">
                 {{-- {{ $producto->nombre }} --}}
                 <div class="form-floating mb-2">
-                    <input type="text" class="form-control" id="producto_id" name="producto_id" placeholder="producto_id" value="{{ $producto->nombre }}" disabled>
-                    <label for="producto_id">producto</label>
+                    <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" placeholder="nombreProducto" value="{{ $producto->nombre }}" disabled>
+                    <label for="nombreProducto">producto</label>
                 </div>
             </div>
     

@@ -18,11 +18,12 @@
 
             <!-- Email Address -->
             <div class="mt-4">
-                <label for="email" :value="__('Email')" class="text">Email</label>
-                <div>
-                    <input id="email" class="block mt-1 w-100" type="email" name="email" :value="old('email')" required>
-                </div>
+                    <label for="email" :value="__('Email')" class="text">Email</label>
+                    <div>
+                        <input id="email" class="block mt-1 w-100" type="email" name="email" :value="old('email')" required>
+                    </div>
             </div>
+
 
             <!-- Password -->
             <div class="mt-4">

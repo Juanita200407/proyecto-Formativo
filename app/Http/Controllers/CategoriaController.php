@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+use App\Models\Producto;
 use Gate;
 
 
@@ -116,6 +117,12 @@ class CategoriaController extends Controller
             
             $categoria->delete();
         }
+
+        // if($categoria->producto()->count())
+        // {
+        //     return back()->with('error', 'Para que funcion este disponible, debe eliminar todos los productos que esten asociados a esta categoria');
+        // }
+        // $categoria->delete();
         return redirect()->route('categoria.index');
         // if(Gate::denies('administrador'))
         // {
@@ -123,7 +130,6 @@ class CategoriaController extends Controller
         //     return redirect()->route('categoria.index');
         // }
         // $categoria = categoria::findOrFail($id);
-        // $categoria->delete();
         // return redirect()->route('categoria.index');
     }
 
