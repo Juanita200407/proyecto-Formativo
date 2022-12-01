@@ -15,58 +15,58 @@
     <h1 class="text-center p-5 fw-bold text-dark fs-1  border-bottom pb-2 mb-4 mx-5 border-2 border-dark">Menú</h1>
         <div class="row row-cols-4 row-cols-md-4 mx-4 my-5 g-2">
             @foreach ($menu as $item)
-            <div class="col text-capitalize">
-              <div class="card">
-                <img src="{{ asset('storage'). '/'. $item->foto }}" class="card-img-top" height="180;" width=";" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title my-2">{{ $item->nombre }}</h5>
-                        <div class="d-card-text">Descripcion:
-                            {{ $item->descripcion }}
-                        </div>
-                        <form action=" {{ route('carritos.store') }}" method="post"> 
-                            @csrf   
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="d-card-text">Tamaño:
-                                        {{ $item->tamaño }}
+                <div class="col text-capitalize">
+                <div class="card">
+                    <img src="{{ asset('storage'). '/'. $item->foto }}" class="card-img-top" height="180;" width=";" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title my-2">{{ $item->nombre }}</h5>
+                            <div class="d-card-text">Descripcion:
+                                {{ $item->descripcion }}
+                            </div>
+                            <form action=" {{ route('carritos.store') }}" method="post"> 
+                                @csrf   
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="d-card-text">Tamaño:
+                                            {{ $item->tamaño }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <td><input type="number" id="cantidad" name="cantidad" class="cantidad text-center" value={{ $item->cantidad}} data-bs-toggle="tooltip" data-bs-placement="right"
+                                            data-bs-title="Ingrese la cantidad que deseas"></td>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <td><input type="number" id="cantidad" name="cantidad" class="cantidad text-center" value={{ $item->cantidad}} data-bs-toggle="tooltip" data-bs-placement="right"
-                                        data-bs-title="Ingrese la cantidad que deseas"></td>
+                                <div class="d-card-text">Precio:
+                                    ${{ number_format($item->precio) }}
                                 </div>
-                            </div>
-                            <div class="d-card-text">Precio:
-                                ${{ number_format($item->precio) }}
-                            </div>
-                            {{-- <a href="{{ route('carrito.store', $item->id) }}" class="btn btn-outline-dark"><i class="fa-solid fa-cart-shopping"></i>comprar</a> --}}
-                            <div class="row">
-                                <div class="col-md-6 my-2">
-                                    <a href="{{ route('welcome.index') }}" class="btn btn-outline-danger"><i class="fa-solid fa-arrow-left fa-flip mx-2" style="--fa-flip-x: 1; --fa-flip-y: 0;"></i>regresar</a>
-                                </div>
-                                <div class="col-md-6 my-2">
-                                    <td><input type="hidden" id="nombre" name="nombre" value={{ $item->nombre }}></td>
-                                    <td><input type="hidden" id="descripcion" name="descripcion" value={{ $item->descripcion }}></td>
-                                    <td><input type="hidden" id="tamaño" name="tamaño" value={{ $item->tamaño }}></td>
-                                    <td><input type="hidden" id="precio" name="precio" value={{ $item->precio }}></td>
-                                    <td><input type="hidden" id="foto" name="foto" value={{ $item->foto }}></td>
-                                    <td><input type="hidden" id="precio" name="user_id" value={{ $userId }}></td>
-                                    <td><input type="hidden" id="precio" name="producto_id" value={{ $item->id }}></td>
-                                
-                                    <td><input type="hidden" name="precioA" id="precioA"></td>
-                                    <td><input type="hidden" name="precioT" readonly id="precioT"></td>
-                                    <div>
-                                        <button class="btn btn-outline-dark" id="calcular"><i class="fa-solid fa-plus fa-flip mx-2" style="--fa-flip-x: 1; --fa-flip-y: 0;"></i>Agregar</button>
+                                {{-- <a href="{{ route('carrito.store', $item->id) }}" class="btn btn-outline-dark"><i class="fa-solid fa-cart-shopping"></i>comprar</a> --}}
+                                <div class="row">
+                                    <div class="col-md-6 my-2">
+                                        <a href="{{ route('welcome.index') }}" class="btn btn-outline-danger"><i class="fa-solid fa-arrow-left mx-2"></i>regresar</a>
+                                    </div>
+                                    <div class="col-md-6 my-2">
+                                        <td><input type="hidden" id="nombre" name="nombre" value={{ $item->nombre }}></td>
+                                        <td><input type="hidden" id="descripcion" name="descripcion" value={{ $item->descripcion }}></td>
+                                        <td><input type="hidden" id="tamaño" name="tamaño" value={{ $item->tamaño }}></td>
+                                        <td><input type="hidden" id="precio" name="precio" value={{ $item->precio }}></td>
+                                        <td><input type="hidden" id="foto" name="foto" value={{ $item->foto }}></td>
+                                        {{-- <td><input type="hidden" id="precio" name="user_id" value={{ $userId }}></td> --}}
+                                        <td><input type="hidden" id="precio" name="producto_id" value={{ $item->id }}></td>
+                                    
+                                        <td><input type="hidden" name="precioA" id="precioA"></td>
+                                        <td><input type="hidden" name="precioT" readonly id="precioT"></td>
+                                        <div>
+                                            <button class="btn btn-outline-dark" id="calcular"><i class="fa-solid fa-plus fa-flip mx-2" style="--fa-flip-x: 1; --fa-flip-y: 0;"></i>Agregar</button>
+                                        </div>
                                     </div>
                                 </div>
+                            
+            
                             </div>
-                          
-        
                         </div>
                     </div>
+                    @endforeach
                 </div>
-            </div>
-            @endforeach
         </button>   
     </form>
         </div>

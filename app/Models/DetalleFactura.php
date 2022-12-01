@@ -5,23 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comprar extends Model
+class DetalleFactura extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'user_id',
         'carrito_id',
-        'nombreCliente',
-        'apellido',
-        'telefono',
+        'name',
         'direccion',
         'cantidad',
-        'cantidadT',
-        'cantidadA',
         'producto_id',
-        'nombreProducto',
+        'nombre',
         'precio',
-        'precioA',
-        'precioT',
-
+        'ValCompra'
     ];
 }

@@ -15,18 +15,15 @@ return new class extends Migration
     {
         Schema::create('carritos', function (Blueprint $table) {
             $table->id();
-            $table->string("nombre");
+            //$table->string("nombre");
             $table->foreignId("user_id")->constant("users");
             $table->string("descripcion");
-            $table->string("tamaño");
-            $table->integer("precio");
-            $table->integer("cantidad");
+            $table->string("name");
+            $table->string("direccion");
+            $table->boolean('comprado')->default(0);
             $table->string("foto")->nullable();
-            $table->integer('precioA')->nullable();
-            $table->integer('precioT')->nullable();
-            $table->integer('cantidadA')->nullable();
-            $table->integer('cantidadT')->nullable();
-            $table->foreignId("producto_id")->constant("productos");
+            $table->timestamps();
+
         });
     }
 

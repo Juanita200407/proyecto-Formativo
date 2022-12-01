@@ -16,6 +16,9 @@
 <body class="fondo">
     <nav class="navbar navbar-expand-lg navbar-dark shadow" id="color">
         <div class="container">
+            <a class="navbar-brand" href="{{ route('welcome.index') }}">
+                <img src="{{ asset('images/alitas.png') }}" alt="Bootstrap" width="120" height="50">
+              </a>
             <a class="navbar-brand" @can(['administrador']) href="{{ route('producto.index')}}" @endcan>Alitas Mary</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"*>
                 <span class="navbar-toggler-icon"></span>
@@ -25,12 +28,12 @@
                     @can(['administrador'])
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Categoria
+                            Categoría
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('categoria.index')}}">listar</a></li>
                             @can(['administrador'])
-                            <li><a class="dropdown-item" href="{{ route('categoria.create')}}">crear menu</a></li>
+                            <li><a class="dropdown-item" href="{{ route('categoria.create')}}">crear categoía</a></li>
                             @endcan
                         </ul>
                     </li>
@@ -42,13 +45,13 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('producto.index')}}">listar</a></li>
-                            <li><a class="dropdown-item" href="{{ route('producto.create')}}">crear menu</a></li>
+                            <li><a class="dropdown-item" href="{{ route('producto.create')}}">crear producto</a></li>
                         </ul>
                     </li>
                     @endcan
-                    <a class="navbar-brand" href="{{ route('carritos.index')}}">
+                    {{-- <a class="navbar-brand" href="{{ route('carritos.store')}}">
                         <img src="{{ asset('images/carrito.png') }}" alt="Bootstrap" width="30" height="24">
-                    </a>
+                    </a> --}}
                     @can(['administrador'])
                     <li class="nav-item">
                         <a href="{{ route('usuarios.index') }}" class="nav-link">Usuarios</a>
@@ -60,10 +63,7 @@
                 {{-- <a class="nav-link dropdown-toggle" href="{{ route('carrito.index') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     carrito
                 </a> --}}
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar..." name="buscar" aria-label="Buscar">
-                    <button class="btn btn-outline-dark" type="submit">Buscar</button>
-                </form>
+               
                 <a class="navbar-brand" href="{{ route('login') }}">
                     <a href="{{ route('login') }}" class="btn">Ingresar</a>
                 </a>  
@@ -74,7 +74,7 @@
    
     
     <div class="container  text-center mt-1 text-capitalize">
-        <h1 class="text-dark my-5" id="animacion">Bienvenidos estimado cliente</h1>
+        <h1 class="text-dark my-5" id="animacion">Bienvenidos estimados clientes</h1>
             <div class="col-md-12 section-title text-center my-5">
                 <h3>Categoría</h3>
             </div>
@@ -93,12 +93,7 @@
                                         <h4>{{ $item->tipo }}</h4>
                                     </div>
                                     <div class="card-link">
-                                        @guest
-                                        <a href="{{ route("login") }}">Ver más</a>
-                                        @endguest
-                                        @auth
                                         <a href="{{ route('menu.item', $item->tipo) }}">Ver más</a>
-                                        @endauth
                                     </div>
                                 </div>
                             </div>
@@ -107,18 +102,25 @@
             </div>
             <div class="row my-5">
                 <div class="col-md-6 text">
-                    <h3>Misión</h3>
-                    <p>Tiene como misión darle la excelencia a nuestros productos de comidas rápidas. nutritivos, sanos y frescos. en función de satisfacer las necesidades del consumo, proporcionando en forma permanente bienestar de las personas. Entregamos a nuestros consumidores los productos que ellos prefieren y eligen por nuestra calidad y presentación.</p>
+                    <div class="my-5">
+                        <h3>Misión</h3>
+                        <p>Tiene como misión darle la excelencia a nuestros productos de comidas rápidas. nutritivos, sanos y frescos. en función de satisfacer las necesidades del consumo, proporcionando en forma permanente bienestar de las personas. Entregamos a nuestros consumidores los productos que ellos prefieren y eligen por nuestra calidad y presentación.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="{{ asset('images/alitas.png') }}" width="400" alt="">
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6">
-
+                    <img src="{{ asset('images/6.png') }}" width="400" height="300" alt="">
                 </div>
                 <div class="col-md-6 text">
-                    <h3>Visión</h3>
-                    <p class="">Tiene como visión consolidarnos como la mejor empresa a nivel nacional, en cuanto a la producción y venta de comidas rápidas, apoyándonos en instalaciones con la más alta tecnología para el manejo de nuestros productos y contamos con personal altamente calificado manteniendo nuestro riguroso y estricto control de calidad.</p>
+                    <div class="my-5">
+                        <h3>Visión</h3>
+                        <p class="">Tiene como visión consolidarnos como la mejor empresa a nivel nacional, en cuanto a la producción y venta de comidas rápidas, apoyándonos en instalaciones con la más alta tecnología para el manejo de nuestros productos y contamos con personal altamente calificado manteniendo nuestro riguroso y estricto control de calidad.</p>
+                    </div>
                 </div>
             </div>
     </div>

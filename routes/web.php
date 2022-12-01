@@ -8,21 +8,10 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\PedidosController;
 use App\Http\Controllers\ComprasController;
 use App\Http\Controllers\CarritoController;
-
-
-
-
-
-
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\DetalleFacturaController;
 
 // use App\Http\Controllers\HomeController;
-
-
-
-
-
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +53,6 @@ Route::get('/pedido/{id}', [PedidosController::class, 'show2'])->name('pedidos.s
 
 Route::post('/pedido/{id}', [PedidosController::class, 'edit2'])->name('pedidos.edit2');
 
-Route::get('/carrito/procesarPedido', 'CarritoController@procesoPedido')->name('carrito.procesoPedido');
 
 Route::resource('producto', ProductoController::class)->middleware('auth');
 Route::resource('usuarios', UsuariosController::class)->middleware('auth');
@@ -72,6 +60,12 @@ Route::resource('categoria', CategoriaController::class)->middleware('auth');
 Route::resource('pedidos', PedidosController::class)->middleware('auth');
 Route::resource('comprar', ComprasController::class)->middleware('auth');
 Route::resource('carritos', CarritoController::class)->middleware('auth');
+Route::resource('clientes', ClienteController::class)->middleware('auth');
+Route::resource('factura', DetalleFacturaController::class)->middleware('auth');
+Route::get('ver-pedido/{id}', [DetalleFacturaController::class, 'show'])->name('verPedido')->middleware('auth');
+
+
+
 
 
 Route::resource('welcome', FrontController::class)->middleware('auth');

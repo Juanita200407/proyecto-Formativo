@@ -28,19 +28,14 @@ class ComprasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create(Producto $id)
     {
         $usuario = User::all();
         $userId = auth()->user()->name;
         $producto = Producto::all();
         $carrito = Carrito::all();
-        
-        $producto = Carrito::where('nombre', '=', $userId)->get();
-        
-        $data = Carrito::where('user_Id', '=', $producto->id)->get(); 
-        dd($data);
-        
-        return view('compras.insert', compact('carrito', 'producto', 'data'));
+    
+        return view('compras.insert', compact('usuario', 'userId', 'carrito', 'producto'));
 
     }
 
@@ -57,7 +52,7 @@ class ComprasController extends Controller
         
         $carrito = Carrito::where('user_id', $userId)->get();
 
-        if($request)
+        if($request = $userId)
         {
             $carrito->each->delete();
         }

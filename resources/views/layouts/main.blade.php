@@ -14,6 +14,9 @@
 <body class="fondo">
 <nav class="navbar navbar-expand-lg navbar-dark shadow" id="color">
         <div class="container">
+            <a class="navbar-brand" href="{{ route('welcome.index') }}">
+                <img src="{{ asset('images/alitas.png') }}" alt="Bootstrap" width="120" height="50">
+              </a>
             <a class="navbar-brand" @can(['administrador']) href="{{ route('producto.index')}}" @endcan>Alitas Mary</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"*>
                 <span class="navbar-toggler-icon"></span>
@@ -23,12 +26,12 @@
                     @can(['administrador'])
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Categoria
+                            Categoría
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('categoria.index')}}">listar</a></li>
                             @can(['administrador'])
-                            <li><a class="dropdown-item" href="{{ route('categoria.create')}}">crear menu</a></li>
+                            <li><a class="dropdown-item" href="{{ route('categoria.create')}}">crear categoría</a></li>
                             @endcan
                         </ul>
                     </li>
@@ -40,7 +43,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('producto.index')}}">listar</a></li>
-                            <li><a class="dropdown-item" href="{{ route('producto.create')}}">crear menu</a></li>
+                            <li><a class="dropdown-item" href="{{ route('producto.create')}}">crear producto</a></li>
                         </ul>
                     </li>
                     @endcan
@@ -58,10 +61,12 @@
                 {{-- <a class="nav-link dropdown-toggle" href="{{ route('carrito.index') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     carrito
                 </a> --}}
+                @can(['administrador'])
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Buscar..." name="buscar" aria-label="Buscar">
                     <button class="btn btn-outline-dark" type="submit">Buscar</button>
                 </form>
+                @endcan
                 <ul class="navbar-nav text-white ms-3">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

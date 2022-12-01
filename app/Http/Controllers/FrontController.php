@@ -21,7 +21,6 @@ class FrontController extends Controller
     {
         $usuario = User::all();
 
-        $userId = auth()->user()->id;
         
         $productos = Producto::all();
         $categorias = Categoria::all();
@@ -31,7 +30,7 @@ class FrontController extends Controller
         $menu = Producto::where('categorias_id', '=', $categorias->id)->get();
       
     
-       return view('menu', compact('categorias', 'menu', 'productos', 'userId'));
+       return view('menu', compact('categorias', 'menu', 'productos'));
     }
 
 

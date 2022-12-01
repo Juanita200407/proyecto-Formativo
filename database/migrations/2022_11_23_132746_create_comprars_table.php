@@ -15,18 +15,11 @@ return new class extends Migration
     {
         Schema::create('comprars', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->string('nombreCliente');
-            $table->string('apellido');
-            $table->string('telefono');
-            $table->string('direccion');
-            $table->integer('cantidad')->nullable();
-            $table->integer('cantidadA')->nullable();
-            $table->integer('cantidadT')->nullable();
-            $table->integer('precioA')->nullable();
-            $table->integer('precioT')->nullable();
-            // $table->string('nombreProducto');
-            $table->foreignId('carrito_id')->constrained('carritos');
+            // $table->foreignId('user_id')->constrained('users');
+            // $table->string('nombreCliente');
+            // $table->string('apellido');
+            // $table->string('telefono');
+            // $table->string('direccion');
             $table->timestamps();
         });
     }

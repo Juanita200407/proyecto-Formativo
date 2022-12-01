@@ -23,6 +23,13 @@
                 </div>
             </div>
 
+            <div>
+                <label for="direccion" :value="__('Direccion')" class="text">Dirección</label>
+                <div>
+                    <input id="direccion" class="block mt-1 w-100" type="text" name="direccion" :value="old('direccion')" required autofocus />
+                </div>
+            </div>
+
             <!-- Email Address -->
             <div class="mt-4">
                 <label for="email" :value="__('Email')" class="text">Email</label>
